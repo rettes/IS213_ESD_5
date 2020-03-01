@@ -37,9 +37,9 @@ CREATE TABLE gentlemen (
 create database if not exists appointment_service;
 use appointment_service;
 
-drop table if exists gentlemen_apointment;
+drop table if exists gentlemen_appointment;
 
-CREATE TABLE gentlemen_apointment (
+CREATE TABLE gentlemen_appointment (
     appointmentID INT NOT NULL AUTO_INCREMENT,
     gentlemenID VARCHAR(128) NOT NULL,
     username VARCHAR(128) NOT NULL,
