@@ -47,3 +47,20 @@ CREATE TABLE gentlemen_appointment (
     payment_status VARCHAR(128) NOT NULL,
     PRIMARY KEY (appointmentID)
 );
+
+
+
+create database if not exists payment_record_service;
+use payment_record_service;
+
+drop table if exists payment_record;
+
+CREATE TABLE payment_record (
+    paymentID INT NOT NULL AUTO_INCREMENT,
+    appointmentID VARCHAR(128) NOT NULL,
+    username VARCHAR(128) NOT NULL,
+    payment_status VARCHAR(128) NOT NULL,
+    payment_date DATETIME NOT NULL,
+    price FLOAT NOT NULL,
+    PRIMARY KEY (paymentID)
+);
