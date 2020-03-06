@@ -6,7 +6,7 @@ from flask_cors import CORS
 # datetime_object = datetime.datetime.now()
  
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/payment_record_service'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/payment_service'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
 db = SQLAlchemy(app)
@@ -15,38 +15,42 @@ CORS(app)
 class Payment(db.Model):
     __tablename__ = 'payment_record'
 
-    paymentID = db.Column(db.Integer, primary_key=True)
-    appointmentID = db.Column(db.Integer, nullable=False)
-    username = db.Column(db.String(64), nullable=False)
-    payment_status = db.Column(db.String(64), nullable=False)
-    payment_date = db.Column(db.DateTime, nullable=False)
+    appointmentID = db.Column(db.Integer, primary_key=True)
+    tutorID = db.Column(db.Integer, nullable=False)
+    customerID = db.Column(db.Integer, nullable=False)
+    subject = db.Column(db.String(64), nullable=False)
+    level = db.Column(db.String(64), nullable=False)
+    timeslot = db.Column(db.DateTime, nullable=False)
     price = db.Column(db.Float, nullable=False)
+    payment_date = db.Column(db.DateTime, nullable=False)
 
-    def init(self, paymentID, appointmentID, username, payment_status, payment_date, price):
-        self.paymentID = paymentID
+    def init(self, appointmentID, tutorID, customerID, subject, level, timeslot, price, payment_date):
         self.appointmentID = appointmentID
-        self.username = username
-        self.payment_status = payment_status
-        self.payment_date = payment_date
+        self.tutorID = tutorID
+        self.customerID = customerID
+        self.subject = subject
+        self.level = level
+        self.timeslot = timeslot
         self.price = price
+        self.payment_date = payment_date
 
     def json(self):
-        return {"paymentID": self.paymentID, "appointmentID": self.appointmentID, "username": self.username, "payment_status": self.payment_status, "payment_date": self.payment_date, "price": self.price}
+        return {"appointmentID": self.appointmentID, "tutorID": self.tutorID, "customerID": self.customerID, "subject": self.subject, "level": self.level, "timeslot": self.timeslot, "price": self.price, "payment_date": self.payment_date}
 
 @app.route("/payments")
 def get_all():
   return jsonify({"Payment Records": [payment_record.json() for payment_record in Payment.query.all()]})
  
-@app.route("/payments_pid/<string:paymentID>")
-def find_by_paymentID(paymentID):
-    payment = Payment.query.filter_by(paymentID=paymentID).first()
+@app.route("/payments_aid/<string:appointmentID>")
+def find_by_paymentID(appointmentID):
+    payment = Payment.query.filter_by(appointmentID=appointmentID).first()
     if payment:
         return jsonify(payment.json())
     return jsonify({"message": "Payment not found."}), 404
 
-@app.route("/payments_user/<string:username>")
-def find_by_username(username):
-    payment = Payment.query.filter_by(username=username).first()
+@app.route("/payments_cid/<string:customerID>")
+def find_by_customerid(customerID):
+    payment = Payment.query.filter_by(customerID=customerID).first()
     if payment:
         return jsonify(payment.json())
     return jsonify({"message": "Payment not found."}), 404
@@ -54,9 +58,9 @@ def find_by_username(username):
 @app.route("/payments", methods=['POST'])
 def make_payment():
     info = request.get_json()
-    appointmentID = info["appointmentID"]
-    if (Payment.query.filter_by(appointmentID=appointmentID).first()):
-        return jsonify({"message": "A transaction with appointment ID '{}' already exists.".format(appointmentID)}), 400
+    # appointmentID = info["appointmentID"]
+    # if (Payment.query.filter_by(appointmentID=appointmentID).first()):
+    #     return jsonify({"message": "A transaction with appointment ID '{}' already exists.".format(appointmentID)}), 400
  
     data = Payment(**info)
 
@@ -96,11 +100,13 @@ if __name__ == '__main__':
 # - How does the .first() function work. If i search by username and there is more than 1 record. How?
 
 # {
-#     "appointmentID" : "123",
-#     "username" : "joey_xoxo",
-#     "payment_status" : "unpaid",
+#     "tutorID" : "123",
+#     "customerID" : "2424"
+#     "subject" : "python",
+#     "level" : "primary",
+#     "timeslot" : "2020-01-01 00:59"
+#     "price" : "24.24",
 #     "payment_date" : "2019-03-03 12:12:12",
-#     "price" : "24.24"
 # }
 
 # admin = User.query.filter_by(username='admin').update(dict(email='my_new_email@example.com')))

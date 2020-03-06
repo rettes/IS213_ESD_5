@@ -12,22 +12,25 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 CORS(app)
 class Appointment(db.Model):
-    __tablename__ = 'gentlemen_appointment'
+    __tablename__ = 'appointments'
  
     appointmentID = db.Column(db.Integer, primary_key=True)
-    gentlemenID = db.Column(db.Integer, nullable=False)
-    username = db.Column(db.String(128), nullable=False)
+    tutorID = db.Column(db.Integer, nullable=False)
+    customerID = db.Column(db.Integer, nullable=False)
+    subject = db.Column(db.String(128), nullable=False)
+    level = db.Column(db.String(128), nullable=False)
     timeslot = db.Column(db.DateTime, nullable=False)
-    payment_status = db.Column(db.String(128), nullable=False)
  
-    def __init__(self, appointmentID, gentlemenID, username, timeslot, payment_status):
+    def __init__(self, appointmentID, tutorID, customerID, subject, level, timeslot):
         self.appointmentID = appointmentID
-        self.gentlemenID = gentlemenID
-        self.username = username
+        self.tutorID = tutorID
+        self.customerID = customerID
+        self.subject = subject
+        self.level = level
         self.timeslot = timeslot
-        self.payment_status = payment_status
+    
     def json(self):
-        return {"appointmentID": self.appointmentID, "gentlemenID": self.gentlemenID, "username": self.username, "timeslot": self.timeslot, "payment_status": self.payment_status}
+        return {"appointmentID": self.appointmentID, "tutorID": self.tutorID, "customerID": self.customerID, "subject": self.subject, "level": self.level, "timeslot": self.timeslot}
 
 
 #(GET, POST, DELETE, PUT)
@@ -35,16 +38,16 @@ class Appointment(db.Model):
 #@app.route("/") will return a default route if you don't specify any routes at all 
 @app.route("/appointment")
 def get_all():
-    return jsonify({"appointments": [gentlemen_appointment.json() for gentlemen_appointment in Appointment.query.all()]})
+    return jsonify({"appointments": [appointments.json() for appointments in Appointment.query.all()]})
 
 @app.route("/appointment/<int:appointmentID>")
 def find_by_appointmentID(appointmentID):
-    gentlemen_appointment = Appointment.query.filter_by(appointmentID=appointmentID).first()
-    if gentlemen_appointment:
-        return jsonify(gentlemen_appointment.json())
+    appointments = Appointment.query.filter_by(appointmentID=appointmentID).first()
+    if appointments:
+        return jsonify(appointments.json())
     return jsonify({"message": "Appointment not found."}), 404
 
- 
+
 @app.route("/appointment", methods=['POST'])
 def create_appointment():
     data = request.get_json()
@@ -67,3 +70,17 @@ def create_appointment():
 # if you import book.py in some other files, the __name__ will not be main therefore disallowing the program to run
 if __name__ == "__main__":
     app.run(port=5003 , debug=True)
+
+# Testing Data:
+
+# {
+#     "appointmentID" : "1",
+#     "tutorID" : "123",
+#     "customerID" : "2424"
+#     "subject" : "python",
+#     "level" : "primary",
+#     "timeslot" : "2020-01-01 00:59"
+# }
+
+# Comments:
+# - deleting/rescheduling of appointment? 

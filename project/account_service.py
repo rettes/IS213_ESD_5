@@ -12,39 +12,39 @@ CORS(app)
 class Account(db.Model):
     tablename = 'account'
 
-    username = db.Column(db.String(64), primary_key=True)
+    customerID = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), nullable=False)
     name = db.Column(db.String(64), nullable=False)
     password = db.Column(db.String(64), nullable=False)
     customer_email = db.Column(db.String(64), nullable=False)
-    dob = db.Column(db.Date(), nullable=False)
 
-    def init(self, username, name, password, customer_email, dob):
+    def init(self, customerID, username, name, password, customer_email):
+        self.customerID = customerID
         self.username = username
         self.name = name
         self.password = password
         self.customer_email = customer_email
-        self.dob = dob
 
     def json(self):
-        return {"username": self.username, "name": self.name, "password": self.password, "customer_email": self.customer_email, "dob": self.dob}
+        return {"customerID": self.customerID, "username": self.username, "name": self.name, "password": self.password, "customer_email": self.customer_email}
 
 @app.route("/account")
 def get_all():
-  return jsonify({"Account": [account.json() for account in Account.query.all()]})
+  return jsonify({"Accounts": [account.json() for account in Account.query.all()]})
  
-@app.route("/account/<string:username>")
-def find_by_username(username):
-    account = Account.query.filter_by(username=username).first()
+@app.route("/account/<string:customerID>")
+def find_by_username(customerID):
+    account = Account.query.filter_by(customerID=customerID).first()
     if account:
-        return jsonify(account.json())
+        return jsonify({"Account": account.json()})
     return jsonify({"message": "Account not found."}), 404
 
 @app.route("/account", methods=['POST'])
 def create_account():
     info = request.get_json()
-    username = info["username"]
-    if (Account.query.filter_by(username=username).first()):
-        return jsonify({"message": "An account with username '{}' already exists.".format(username)}), 400
+    customerID = info["customerID"]
+    if (Account.query.filter_by(customerID=customerID).first()):
+        return jsonify({"message": "An account with customer ID '{}' already exists.".format(customerID)}), 400
  
     data = Account(**info)
 
@@ -60,3 +60,14 @@ def create_account():
 
 if __name__ == '__main__':
     app.run(port=5004, debug=True)
+
+
+# Testing Data:
+
+# {
+#     "customerID" : "123",
+#     "username" : "joey_xoxo",
+#     "name" : "Joey Tan",
+#     "password" : "huhlumpa",
+#     "customer_email" : "joey_xoxo@gmail.com"
+# }
