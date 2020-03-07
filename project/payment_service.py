@@ -41,14 +41,14 @@ class Payment(db.Model):
 def get_all():
   return jsonify({"Payment Records": [payment_record.json() for payment_record in Payment.query.all()]})
  
-@app.route("/payments_aid/<string:appointmentID>")
+@app.route("/payments_aid/<int:appointmentID>")
 def find_by_paymentID(appointmentID):
     payment = Payment.query.filter_by(appointmentID=appointmentID).first()
     if payment:
         return jsonify(payment.json())
     return jsonify({"message": "Payment not found."}), 404
 
-@app.route("/payments_cid/<string:customerID>")
+@app.route("/payments_cid/<int:customerID>")
 def find_by_customerid(customerID):
     payment = Payment.query.filter_by(customerID=customerID).first()
     if payment:
@@ -62,7 +62,7 @@ def make_payment():
     # if (Payment.query.filter_by(appointmentID=appointmentID).first()):
     #     return jsonify({"message": "A transaction with appointment ID '{}' already exists.".format(appointmentID)}), 400
  
-    data = Payment(**info)
+    data = Payment(**info) 
 
     try:
         db.session.add(data)
@@ -74,22 +74,22 @@ def make_payment():
 
     return jsonify(data.json()), 201
 
-@app.route("/payments", methods=['PUT'])
-def update_payment():
-    info = request.get_json()
-    appointmentID = info["appointmentID"]
-    status = info["payment_status"]
+# @app.route("/payments", methods=['PUT'])
+# def update_payment():
+#     info = request.get_json()
+#     appointmentID = info["appointmentID"]
+#     status = info["payment_status"]
 
-    try:
-        data = Payment.query.filter_by(appointmentID=appointmentID).update(dict(payment_status=status))
-        db.session.commit()
-        data = Payment.query.filter_by(appointmentID=appointmentID).first()
-    except Exception as e:
-        print(e)
-        print(info)
-        return jsonify({"message": "An error occurred during payment."}), 500
+#     try:
+#         data = Payment.query.filter_by(appointmentID=appointmentID).update(dict(payment_status=status))
+#         db.session.commit()
+#         data = Payment.query.filter_by(appointmentID=appointmentID).first()
+#     except Exception as e:
+#         print(e)
+#         print(info)
+#         return jsonify({"message": "An error occurred during payment."}), 500
 
-    return jsonify(data.json()), 201
+#     return jsonify(data.json()), 201
 
 if __name__ == '__main__':
     app.run(port=5005, debug=True)

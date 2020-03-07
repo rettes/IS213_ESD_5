@@ -37,9 +37,16 @@ class Addtocart(db.Model):
 #(GET, POST, DELETE, PUT)
 #get is a query, post is to create, delete and put is to update
 #@app.route("/") will return a default route if you don't specify any routes at all 
-@app.route("/cart")
-def get_all():
-    return jsonify({"Cart": [cart.json() for cart in Addtocart.query.all()]})
+@app.route("/cart/<int:customerID>:")
+def get_all(customerID):
+    try:
+        cart_details = Addtocart.query.filter_by(customerID=customerID).first()
+        if cart_details:
+            return jsonify({"Cart": cart.json()})
+    except Exception as e:
+        print(cart_details)
+        print (e)
+        return jsonify({"message": "Cart not found."}), 404
 
  
 @app.route("/cart", methods=['POST'])
@@ -82,6 +89,7 @@ if __name__ == "__main__":
 
 # Comments:
 
+# - Have issue retrieving customer's cart details with customerID
 # - How do we update the selection in our cart?
 # - primary key consists of 3 variables, how do we filer them?
 
