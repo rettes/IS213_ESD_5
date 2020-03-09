@@ -37,12 +37,13 @@ class Addtocart(db.Model):
 #(GET, POST, DELETE, PUT)
 #get is a query, post is to create, delete and put is to update
 #@app.route("/") will return a default route if you don't specify any routes at all 
-@app.route("/cart/<int:customerID>:")
+@app.route("/cart/<int:customerID>")
 def get_all(customerID):
     try:
-        cart_details = Addtocart.query.filter_by(customerID=customerID).first()
+        cart_details = Addtocart.query.filter_by(customerID=customerID).all()
         if cart_details:
-            return jsonify({"Cart": cart.json()})
+            return jsonify({"Cart": [cart_details.json() for cart_details in cart_details]})
+
     except Exception as e:
         print(cart_details)
         print (e)
