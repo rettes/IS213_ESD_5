@@ -61,7 +61,7 @@ def make_payment():
     # appointmentID = info["appointmentID"]
     # if (Payment.query.filter_by(appointmentID=appointmentID).first()):
     #     return jsonify({"message": "A transaction with appointment ID '{}' already exists.".format(appointmentID)}), 400
- 
+    print(info)
     data = Payment(**info) 
 
     try:
