@@ -2,6 +2,10 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
+import json
+import requests
+from datetime import datetime
+
 
 
 # initiate Flask
@@ -40,9 +44,26 @@ class Addtocart(db.Model):
 @app.route("/cart/<int:customerID>")
 def get_all(customerID):
     try:
-        cart_details = Addtocart.query.filter_by(customerID=customerID).all()
+        print("hello")
+        ID = int(customerID)
+        cart_details = Addtocart.query.filter_by(customerID=ID).all()
         if cart_details:
-            return jsonify({"Cart": [cart_details.json() for cart_details in cart_details]})
+            cart = jsonify({"Cart": [cart_details.json() for cart_details in cart_details]})
+            # cart = json.dumps(cart, default=str)
+            cart = cart.get_json(force=False, silent=False, cache=True)['Cart'][0]
+            year = str(datetime.strptime(cart['timeslot'][5:25],"%d %b %Y %H:%M:%S").year)
+            month = str(datetime.strptime(cart['timeslot'][5:25],"%d %b %Y %H:%M:%S").month)
+            day = str(datetime.strptime(cart['timeslot'][5:25],"%d %b %Y %H:%M:%S").day)
+            hour = str(datetime.strptime(cart['timeslot'][5:25],"%d %b %Y %H:%M:%S").hour)
+            minutes = str(datetime.strptime(cart['timeslot'][5:25],"%d %b %Y %H:%M:%S").minute)
+            seconds = str(datetime.strptime(cart['timeslot'][5:25],"%d %b %Y %H:%M:%S").second)
+            date = year +  "-" + month + "-" + day + " "+ hour + ":"+ minutes + ":"+ seconds
+            cart['timeslot'] = date
+            print(cart)
+            
+            return cart
+            
+            
 
     except Exception as e:
         print(cart_details)
@@ -82,6 +103,8 @@ def add_to_cart():
         return jsonify({"message": "An error occurred creating the selection."}), 500
 
     return jsonify(selection.json()), 201
+
+
 
 # if you import book.py in some other files, the __name__ will not be main therefore disallowing the program to run
 if __name__ == "__main__":

@@ -4,6 +4,12 @@ from flask_cors import CORS
 
 # import datetime
 # datetime_object = datetime.datetime.now()
+
+import json
+import requests
+from datetime import datetime
+
+
  
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/payment_service'
@@ -57,12 +63,26 @@ def find_by_customerid(customerID):
 
 @app.route("/payments", methods=['POST'])
 def make_payment():
-    info = request.get_json()
+    try:
+        info = request.get_json()
+        print(info)
+        customerID = info["customerID"]
+        cartserviceURL = "http://localhost:5006/cart/" + str(customerID)
+        r= requests.get(cartserviceURL)
+        print("Informed Cart service to send data over.")
+        result = r.text
+    except Exception as e: 
+        print(e)
+
+
     # appointmentID = info["appointmentID"]
     # if (Payment.query.filter_by(appointmentID=appointmentID).first()):
     #     return jsonify({"message": "A transaction with appointment ID '{}' already exists.".format(appointmentID)}), 400
-    print(info)
-    data = Payment(**info) 
+    
+    data = json.loads(result)
+    data['payment_date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    print(data)
+    data = Payment(**data) 
 
     try:
         db.session.add(data)
