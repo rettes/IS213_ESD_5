@@ -73,69 +73,26 @@ def make_payment():
         result = r.text
     except Exception as e: 
         print(e)
-
-
-    # appointmentID = info["appointmentID"]
-    # if (Payment.query.filter_by(appointmentID=appointmentID).first()):
-    #     return jsonify({"message": "A transaction with appointment ID '{}' already exists.".format(appointmentID)}), 400
     
     data = json.loads(result)
-    data['payment_date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print(data)
-    data = Payment(**data) 
+    data = data['Cart']
+    for item in data:
+        item['payment_date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        print(item)
+        item = Payment(**item) 
+        try:
+            db.session.add(item)
+            db.session.commit()
+        except Exception as e:
+            print(e)
+            print(info)
+            return jsonify({"message": "An error occurred during payment."}), 500
 
-    try:
-        db.session.add(data)
-        db.session.commit()
-    except Exception as e:
-        print(e)
-        print(info)
-        return jsonify({"message": "An error occurred during payment."}), 500
+    return jsonify({"message": "Payment success"}), 201
 
-    return jsonify(data.json()), 201
 
-# @app.route("/payments", methods=['PUT'])
-# def update_payment():
-#     info = request.get_json()
-#     appointmentID = info["appointmentID"]
-#     status = info["payment_status"]
-
-#     try:
-#         data = Payment.query.filter_by(appointmentID=appointmentID).update(dict(payment_status=status))
-#         db.session.commit()
-#         data = Payment.query.filter_by(appointmentID=appointmentID).first()
-#     except Exception as e:
-#         print(e)
-#         print(info)
-#         return jsonify({"message": "An error occurred during payment."}), 500
-
-#     return jsonify(data.json()), 201
 
 if __name__ == '__main__':
     app.run(port=5005, debug=True)
 
 
-# Comments:
-# - Datetime is not intuitive enough
-# - How does the .first() function work. If i search by username and there is more than 1 record. How?
-
-# {
-#     "tutorID" : "123",
-#     "customerID" : "2424"
-#     "subject" : "python",
-#     "level" : "primary",
-#     "timeslot" : "2020-01-01 00:59"
-#     "price" : "24.24",
-#     "payment_date" : "2019-03-03 12:12:12",
-# }
-
-# admin = User.query.filter_by(username='admin').update(dict(email='my_new_email@example.com')))
-# db.session.commit()
-
-# admin = User.query.filter_by(username='admin').first()
-# admin.email = 'my_new_email@example.com'
-# db.session.commit()
-
-# user = User.query.get(5)
-# user.name = 'New Name'
-# db.session.commit()

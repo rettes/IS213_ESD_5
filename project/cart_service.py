@@ -49,19 +49,17 @@ def get_all(customerID):
         cart_details = Addtocart.query.filter_by(customerID=ID).all()
         if cart_details:
             cart = jsonify({"Cart": [cart_details.json() for cart_details in cart_details]})
-            cart = cart.get_json(force=False, silent=False, cache=True)['Cart']
-            print (cart)
-            for item in cart:
-                year = str(datetime.strptime(cart['timeslot'][5:25],"%d %b %Y %H:%M:%S").year)
-                month = str(datetime.strptime(cart['timeslot'][5:25],"%d %b %Y %H:%M:%S").month)
-                day = str(datetime.strptime(cart['timeslot'][5:25],"%d %b %Y %H:%M:%S").day)
-                hour = str(datetime.strptime(cart['timeslot'][5:25],"%d %b %Y %H:%M:%S").hour)
-                minutes = str(datetime.strptime(cart['timeslot'][5:25],"%d %b %Y %H:%M:%S").minute)
-                seconds = str(datetime.strptime(cart['timeslot'][5:25],"%d %b %Y %H:%M:%S").second)
-                date = year +  "-" + month + "-" + day + " "+ hour + ":"+ minutes + ":"+ seconds
-                cart['timeslot'] = date
-            print(cart)
+            cart = cart.get_json(force=False, silent=False, cache=True)
             
+            for item in cart['Cart']:
+                year = str(datetime.strptime(item['timeslot'][5:25],"%d %b %Y %H:%M:%S").year)
+                month = str(datetime.strptime(item['timeslot'][5:25],"%d %b %Y %H:%M:%S").month)
+                day = str(datetime.strptime(item['timeslot'][5:25],"%d %b %Y %H:%M:%S").day)
+                hour = str(datetime.strptime(item['timeslot'][5:25],"%d %b %Y %H:%M:%S").hour)
+                minutes = str(datetime.strptime(item['timeslot'][5:25],"%d %b %Y %H:%M:%S").minute)
+                seconds = str(datetime.strptime(item['timeslot'][5:25],"%d %b %Y %H:%M:%S").second)
+                date = year +  "-" + month + "-" + day + " "+ hour + ":"+ minutes + ":"+ seconds
+                item['timeslot'] = date
             return cart
             
             
