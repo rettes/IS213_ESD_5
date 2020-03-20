@@ -2,7 +2,9 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
-
+import pika
+import json
+import requests
 
 # initiate Flask
 app = Flask(__name__) 
@@ -49,7 +51,7 @@ def find_by_appointmentID(appointmentID):
 
 
 @app.route("/appointment", methods=['POST'])
-def create_appointment():
+def create_appointment(data):
     data = request.get_json()
     appointmentID = data['appointmentID']
     if (Appointment.query.filter_by(appointmentID=appointmentID).first()):
@@ -67,8 +69,34 @@ def create_appointment():
 
     return jsonify(appointment.json()), 201
 
+def receiveAppointmentUpdate():
+    print("hello")
+    hostname = "localhost"
+    port = 5672
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host = hostname , port= port))
+    channel = connection.channel()
+
+    exchangename = "payment_direct"
+    channel.exchange_declare(exchange=exchangename, exchange_type ="direct")
+    channelqueue = channel.queue_declare(queue="", exclusive=True)
+    queue_name = channelqueue.method.queue
+    channel.queue_bind(exchange=exchangename, queue=queue_name, routing_key="payment_service.info")
+
+    channel.basic_consume(queue=queue_name, on_message_callback=callback, auto_ack=True)
+    channel.start_consuming()
+
+def callback(channel,method, properties, body):
+    print("Receive from payment.")
+    create_appointment(json.loads(body))
+    print("success")
+
+
+    
+
+
 # if you import book.py in some other files, the __name__ will not be main therefore disallowing the program to run
 if __name__ == "__main__":
+    receiveAppointmentUpdate()
     app.run(port=5003 , debug=True)
 
 # Testing Data:

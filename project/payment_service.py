@@ -4,7 +4,7 @@ from flask_cors import CORS
 
 # import datetime
 # datetime_object = datetime.datetime.now()
-
+import pika
 import json
 import requests
 from datetime import datetime
@@ -61,6 +61,47 @@ def find_by_customerid(customerID):
         return jsonify(payment.json())
     return jsonify({"message": "Payment not found."}), 404
 
+def send_order(payment):
+    hostname = "localhost" # default broker hostname. Web management interface default at http://localhost:15672
+    port = 5672 # default messaging port.
+    # connect to the broker and set up a communication channel in the connection
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host=hostname, port=port))
+        # Note: various network firewalls, filters, gateways (e.g., SMU VPN on wifi), may hinder the connections;
+        # If "pika.exceptions.AMQPConnectionError" happens, may try again after disconnecting the wifi and/or disabling firewalls
+    channel = connection.channel()
+
+    # set up the exchange if the exchange doesn't exist
+    exchangename="payment_direct"
+    channel.exchange_declare(exchange=exchangename, exchange_type='direct')
+
+    # prepare the message body content
+    message = json.dumps(payment, default=str) # convert a JSON object to a string
+
+    # send the message
+    # always inform Monitoring for logging no matter if successful or not
+    channel.basic_publish(exchange=exchangename, routing_key="payment_service.info", body=message)
+        # By default, the message is "transient" within the broker;
+        #  i.e., if the monitoring is offline or the broker cannot match the routing key for the message, the message is lost.
+        # If need durability of a message, need to declare the queue in the sender (see sample code below).
+
+   
+    # channel.queue_declare(queue='errorhandler', durable=True) # make sure the queue used by the error handler exist and durable
+    # channel.queue_bind(exchange=exchangename, queue='errorhandler', routing_key='shipping.error') # make sure the queue is bound to the exchange
+    # channel.basic_publish(exchange=exchangename, routing_key="shipping.error", body=message,
+    #     properties=pika.BasicProperties(delivery_mode = 2) # make message persistent within the matching queues until it is received by some receiver (the matching queues have to exist and be durable and bound to the exchange)
+    # )
+    # print("Order status ({:d}) sent to error handler.".format(payment["status"]))
+    
+    # channel.queue_declare(queue='shipping', durable=True) # make sure the queue used by Shipping exist and durable
+    # channel.queue_bind(exchange=exchangename, queue='shipping', routing_key='shipping.order') # make sure the queue is bound to the exchange
+    # channel.basic_publish(exchange=exchangename, routing_key="shipping.order", body=message,
+    #     properties=pika.BasicProperties(delivery_mode = 2, # make message persistent within the matching queues until it is received by some receiver (the matching queues have to exist and be durable and bound to the exchange, which are ensured by the previous two api calls)
+    #     )
+    # )
+    print("Order sent to Appointment.")
+    # close the connection to the broker
+    connection.close()
+
 @app.route("/payments", methods=['POST'])
 def make_payment():
     try:
@@ -79,10 +120,12 @@ def make_payment():
     for item in data:
         item['payment_date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         print(item)
-        item = Payment(**item) 
+        payment = Payment(**item) 
         try:
-            db.session.add(item)
+            db.session.add(payment)
             db.session.commit()
+            send_order(item)
+
         except Exception as e:
             print(e)
             print(info)

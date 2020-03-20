@@ -44,7 +44,6 @@ class Addtocart(db.Model):
 @app.route("/cart/<int:customerID>")
 def get_all(customerID):
     try:
-        print("hello")
         ID = int(customerID)
         cart_details = Addtocart.query.filter_by(customerID=ID).all()
         if cart_details:
