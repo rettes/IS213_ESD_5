@@ -59,7 +59,7 @@ drop table if exists payment_record;
 
 CREATE TABLE payment_record (
     appointmentID INT NOT NULL AUTO_INCREMENT,
-    tutorID VARCHAR(128) NOT NULL,
+    tutorID INT NOT NULL,
     customerID INT NOT NULL,
     subject VARCHAR(128) NOT NULL,
     level VARCHAR(128) NOT NULL,
@@ -77,7 +77,7 @@ use appointment_service;
 drop table if exists appointments;
 
 CREATE TABLE appointments (
-    appointmentID INT NOT NULL,
+    appointmentID INT NOT NULL AUTO_INCREMENT,
     tutorID INT NOT NULL,
     customerID INT NOT NULL,
     subject VARCHAR(128) NOT NULL,

@@ -15,7 +15,6 @@ db = SQLAlchemy(app)
 CORS(app)
 class Appointment(db.Model):
     __tablename__ = 'appointments'
- 
     appointmentID = db.Column(db.Integer, primary_key=True)
     tutorID = db.Column(db.Integer, nullable=False)
     customerID = db.Column(db.Integer, nullable=False)
@@ -51,64 +50,27 @@ def find_by_appointmentID(appointmentID):
 
 
 @app.route("/appointment", methods=['POST'])
-def create_appointment(data):
+def create_appointment():
     data = request.get_json()
-    appointmentID = data['appointmentID']
-    if (Appointment.query.filter_by(appointmentID=appointmentID).first()):
-        return jsonify({"message": "An appointment with appointmentID '{}' already exists.".format(appointmentID)}), 400
-    
+    print("testing2")
+    del data['price']
+    del data['payment_date']
+    data['appointmentID'] = None
+    print(data)
     appointment = Appointment(**data)
-
+    print(appointment)
     try:
         db.session.add(appointment)
         db.session.commit()
     except Exception as e:
         print(appointment)
         print(e)
-        return jsonify({"message": "An error occurred creating the appointment."}), 500
+        return jsonify({"message": "An error occurred creating the appointment.", "status" : False}), 500
 
     return jsonify(appointment.json()), 201
 
-def receiveAppointmentUpdate():
-    print("hello")
-    hostname = "localhost"
-    port = 5672
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host = hostname , port= port))
-    channel = connection.channel()
-
-    exchangename = "payment_direct"
-    channel.exchange_declare(exchange=exchangename, exchange_type ="direct")
-    channelqueue = channel.queue_declare(queue="", exclusive=True)
-    queue_name = channelqueue.method.queue
-    channel.queue_bind(exchange=exchangename, queue=queue_name, routing_key="payment_service.info")
-
-    channel.basic_consume(queue=queue_name, on_message_callback=callback, auto_ack=True)
-    channel.start_consuming()
-
-def callback(channel,method, properties, body):
-    print("Receive from payment.")
-    create_appointment(json.loads(body))
-    print("success")
-
-
-    
-
-
-# if you import book.py in some other files, the __name__ will not be main therefore disallowing the program to run
 if __name__ == "__main__":
-    receiveAppointmentUpdate()
+    print("checking if appointment works as an external service;")
     app.run(port=5003 , debug=True)
 
-# Testing Data:
 
-# {
-#     "appointmentID" : "1",
-#     "tutorID" : "123",
-#     "customerID" : "2424"
-#     "subject" : "python",
-#     "level" : "primary",
-#     "timeslot" : "2020-01-01 00:59"
-# }
-
-# Comments:
-# - updating/deleting/rescheduling of appointment? 
