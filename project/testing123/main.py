@@ -11,10 +11,11 @@ from oauth2client.file import Storage
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+import json
+import requests
 
 
 app = Flask(__name__)
-db = SQLAlchemy(app)
 CORS(app)
 
 def get_labels():
@@ -30,8 +31,26 @@ def get_labels():
 
 @app.route("/notification", methods=['POST'])
 def send_email():
+    #appointment data send over through http invocation
     info = request.get_json()
     print(info)
+
+    #getting name and email from client to email to them.
+    accountURL = "http://localhost:5004/account/" + str(info['customerID'])
+    r= requests.get(accountURL)
+    result = r.text
+    customerData = json.loads(result)['Account']
+    print(customerData)
+
+    #getting name and email from tutor to email to them.
+    print(info['tutorID'])
+    tutorURL = "http://localhost:5001/tutor/" + str(info['tutorID'])
+    r = requests.get(tutorURL)
+    result = r.text
+    tutorData = json.loads(result)['tutor'][0]
+    print(tutorData)
+    
+
     try:
         import argparse
         flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
@@ -47,11 +66,17 @@ def send_email():
 
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('gmail', 'v1', http=http)
-
-
+    customer_name = customerData['name'].upper()
+    tutor_name = tutorData["name"].upper()
+    statement = "Hi " + customer_name +  ", this is a confirmation email from TutorLab. \nYou have hired "+ tutorData['name'].upper() + ".\nThe rate is " + str(info['price']) + "\nYou have hired his/her services for " + tutorData['subject'] + " at the " + tutorData['level'] +" level. \nPlease take note in your working calender.\nThe date and time for the meetup is at " + str(info['timeslot']) +".\nPlease come 10 minutes early to avoid being late for the appointment. Much thanks from TutorLabs."
+    statement2 = "Hi " + tutor_name + ", this is a confirmation email from TutorLab. \nA customer named " + customerData['name'].upper() + " has hired your services for " + tutorData['subject'] + " at the " + tutorData['level'] +" level. \nPlease take note in your working calender.\nThe date and time for the meetup is at " + str(info['timeslot']) +".\nPlease come 10 minutes early to avoid being late for the appointment. Much thanks from TutorLabs."
     sendInst = send_email.send_email(service)
-    message = sendInst.create_message_with_attachment('esdproject2@gmail.com','weixiang9655@gmail.com','Done','Hi there, This is a test from Python!', 'image.jpg' )
+    message = sendInst.create_message_with_attachment('esdproject2@gmail.com',customerData['customer_email'],'Done',statement, 'image.png' )
+    message2 = sendInst.create_message_with_attachment('esdproject2@gmail.com',tutorData['tutor_email'],'Done',statement2, 'image.png' )
     sendInst.send_message('me',message)
+    sendInst.send_message('me',message2)
+
+    return jsonify({"message": "Email success"}), 201
 
 if __name__ == '__main__':
     app.run(port=5010, debug=True)

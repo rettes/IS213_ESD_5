@@ -42,7 +42,7 @@ class Tutor(db.Model):
 def get_all():
     return jsonify({"tutor": [tutor.json() for tutor in Tutor.query.all()]})
 
-@app.route('/tutor/<int:tutorID>')
+@app.route("/tutor/<string:tutorID>")
 def find_by_tutorID(tutorID):
     tutor = Tutor.query.filter_by(tutorID=tutorID).all()
     if tutor:
@@ -58,4 +58,4 @@ def find_by_tutorID(tutorID):
 #     return jsonify({"message": "Tutor not found."}), 404
 
 if __name__ == '__main__':
-    app.run(port=5004, debug=True)
+    app.run(port=5001, debug=True)

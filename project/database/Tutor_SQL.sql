@@ -1,5 +1,5 @@
-create database if not exists customer_service;
-use customer_service;
+create database if not exists account_service;
+use account_service;
 
 drop table if exists account;
 
