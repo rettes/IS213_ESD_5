@@ -52,20 +52,25 @@ def find_by_appointmentID(appointmentID):
 @app.route("/appointment", methods=['POST'])
 def create_appointment():
     data = request.get_json()
-    print("testing2")
-    del data['price']
-    del data['payment_date']
-    data['appointmentID'] = None
-    print(data)
-    appointment = Appointment(**data)
-    print(appointment)
-    try:
-        db.session.add(appointment)
-        db.session.commit()
-    except Exception as e:
+    
+    for item in data:
+        print(item)
+        print("testing2")
+        del item['price']
+        del item['payment_date']
+        item['appointmentID'] = None
+        print(item)
+        appointment = Appointment(**item)
         print(appointment)
-        print(e)
-        return jsonify({"message": "An error occurred creating the appointment.", "status" : False}), 500
+        try:
+            db.session.add(appointment)
+            db.session.commit()
+        except Exception as e:
+            print(appointment)
+            print(e)
+            return jsonify({"message": "An error occurred creating the appointment.", "status" : False}), 500
+    
+    
 
     return jsonify(appointment.json()), 201
 

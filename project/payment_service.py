@@ -104,16 +104,17 @@ def make_payment():
         try:
             db.session.add(payment)
             db.session.commit()
-            send_order(item)
-            notificationURL = "http://localhost:5010/notification"
-            print("Reaching notification")
-            r= requests.post(notificationURL, json = item)
-            print("Completed notification")
-
         except Exception as e:
             print(e)
             print(info)
             return jsonify({"message": "An error occurred during payment."}), 500
+
+    send_order(data)
+    notificationURL = "http://localhost:5010/notification"
+    print("Reaching notification")
+    r= requests.post(notificationURL, json = data)
+    print("Completed notification")
+
 
     return jsonify({"message": "Payment success"}), 201
 
