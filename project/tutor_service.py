@@ -50,6 +50,22 @@ def find_by_tutorID(tutorID):
         return jsonify({"tutor": [tutor.json() for tutor in tutor]})
     return jsonify({"message": "Tutor not found."}), 404
 
+@app.route("/tutor", methods=['POST'])
+def filter_tutor():
+    info = request.get_json()
+    subject = info["subject"]
+    experience = info["experience"]
+    rates = info["rates"]
+    if subject == "":
+        tutor = Tutor.query.filter(Tutor.experience>=experience,
+                                    Tutor.rates>=rates).all()
+    elif subject != "":
+        tutor = Tutor.query.filter(Tutor.subject==subject,
+                                    Tutor.experience>=experience,
+                                    Tutor.rates>=rates).all()
+    if tutor:
+        return jsonify({"tutor": [tutor.json() for tutor in tutor]})
+    return jsonify({"message": "Tutor not found."}), 404
 
 # @app.route("/tutor/<string:sex>")
 # def find_by_sex(sex):
