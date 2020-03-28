@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from os import environ
  
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/account_service'
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('account_serviceURL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
 db = SQLAlchemy(app)
@@ -59,7 +60,7 @@ def create_account():
     return jsonify(data.json()), 201
 
 if __name__ == '__main__':
-    app.run(port=5004, debug=True)
+    app.run(host='0.0.0.0' , port=5004, debug=True)
 
 
 # Testing Data:
