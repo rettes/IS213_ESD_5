@@ -2,8 +2,9 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from os import environ
-# import datetime
-# datetime_object = datetime.datetime.now()
+
+
+
 import pika
 import json
 import requests
@@ -12,7 +13,7 @@ from datetime import datetime
 
  
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/payment_service'
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('payment_serviceURL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
 db = SQLAlchemy(app)
@@ -118,6 +119,6 @@ def make_payment():
 
 
 if __name__ == '__main__':
-    app.run(port=5005, debug=True)
+    app.run(host='0.0.0.0', port=5005, debug=True)
 
 
