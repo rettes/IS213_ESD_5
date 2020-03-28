@@ -71,13 +71,13 @@ def send_order(payment):
     channel = connection.channel()
 
     # set up the exchange if the exchange doesn't exist
-    exchangename="payment_direct"
-    channel.exchange_declare(exchange=exchangename, exchange_type='direct')
+    exchangename="payment_fanout"
+    channel.exchange_declare(exchange=exchangename, exchange_type='fanout')
 
     # prepare the message body content
     message = json.dumps(payment, default=str) # convert a JSON object to a string
 
-    channel.basic_publish(exchange=exchangename, routing_key="payment_service.info", body=message)
+    channel.basic_publish(exchange=exchangename, routing_key="", body=message)
     print("Order sent to Appointment.")
     # close the connection to the broker
     connection.close()
@@ -110,9 +110,6 @@ def make_payment():
             return jsonify({"message": "An error occurred during payment."}), 500
 
     send_order(data)
-    notificationURL = "http://localhost:5010/notification"
-    print("Reaching notification")
-    r= requests.post(notificationURL, json = data)
     print("Completed notification")
 
 

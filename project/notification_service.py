@@ -6,8 +6,8 @@ import pika
 import json
 import requests
 
-def receiveAppointmentUpdate():
-    print("testing")
+def receiveNotificationUpdate():
+    print("Notification service is working right now.")
     hostname = "localhost"
     port = 5672
     connection = pika.BlockingConnection(pika.ConnectionParameters(host = hostname , port= port))
@@ -24,11 +24,12 @@ def receiveAppointmentUpdate():
 
 def callback(channel,method, properties, body):
     print("Receive from payment.")
-    appointmentServiceURL = "http://localhost:5003/appointment"
-    r= requests.post(appointmentServiceURL, json = json.loads(body))
+    notificationURL = "http://localhost:5010/notification"
+    print("Reaching notification")
+    r= requests.post(notificationURL, json = json.loads(body))
     print("success")
 
 
 if __name__ == "__main__":
-    receiveAppointmentUpdate()
+    receiveNotificationUpdate()
     print("checking if appointment works as an external service;")
