@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from os import environ
 
 import pika
 import json
@@ -8,7 +9,7 @@ import requests
 
 # initiate Flask
 app = Flask(__name__) 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/appointment_service'
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('appointment_serviceURL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
 db = SQLAlchemy(app)
@@ -76,6 +77,6 @@ def create_appointment():
 
 if __name__ == "__main__":
     print("checking if appointment works as an external service;")
-    app.run(port=5003 , debug=True)
+    app.run(host='0.0.0.0', port=5003 , debug=True)
 
 

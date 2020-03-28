@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from os import environ
 
 import json
 import requests
@@ -10,7 +11,7 @@ from datetime import datetime
 
 # initiate Flask
 app = Flask(__name__) 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/cart_service'
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('cart_serviceURL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
 db = SQLAlchemy(app)
@@ -106,7 +107,7 @@ def add_to_cart():
 
 # if you import book.py in some other files, the __name__ will not be main therefore disallowing the program to run
 if __name__ == "__main__":
-    app.run(port=5006 , debug=True)
+    app.run(host='0.0.0.0', port=5006 , debug=True)
 
 
 # Comments:
