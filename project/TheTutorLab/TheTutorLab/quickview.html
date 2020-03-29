@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Home</title>
+	<title>All Tutur</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
@@ -69,7 +69,7 @@
 <body class="animsition">
 	
 	<!-- Header -->
-	<header>
+	<header class="header-v4">
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
@@ -83,12 +83,18 @@
 							My Account
 						</a>
 
-					
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							EN
+						</a>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							SGD
+						</a>
 					</div>
 				</div>
 			</div>
 
-			<div class="wrap-menu-desktop">
+			<div class="wrap-menu-desktop how-shadow1">
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
@@ -123,18 +129,16 @@
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
-
 					</div>
 				</nav>
 			</div>	
-		
 		</div>
 
 		<!-- Header Mobile -->
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="index.html"><img src="images/TutorLab_Logo.png" alt="IMG-LOGO"></a>
+				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -162,20 +166,31 @@
 
 
 		<!-- Menu Mobile -->
-
-		
-
 		<div class="menu-mobile">
 			<ul class="topbar-mobile">
+				<li>
+					<div class="left-top-bar">
+						Free shipping for standard order over $100
+					</div>
+				</li>
 
 				<li>
 					<div class="right-top-bar flex-w h-full">
-	
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							Help & FAQs
+						</a>
 
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
 							My Account
 						</a>
 
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							EN
+						</a>
+
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							USD
+						</a>
 					</div>
 				</li>
 			</ul>
@@ -183,25 +198,53 @@
 			<ul class="main-menu-m">
 				<li>
 					<a href="index.html">Home</a>
-
+					<ul class="sub-menu-m">
+						<li><a href="index.html">Homepage 1</a></li>
+						<li><a href="home-02.html">Homepage 2</a></li>
+						<li><a href="home-03.html">Homepage 3</a></li>
+					</ul>
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
 					</span>
 				</li>
 
-
-
 				<li>
-					<a href="tutor2.html" class="label1 rs1" data-label1="hot">Tutor</a>
+					<a href="product.html">Shop</a>
 				</li>
 
 				<li>
-					<a href="">Appointment</a>
+					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
 				</li>
 
+				<li>
+					<a href="blog.html">Blog</a>
+				</li>
+
+				<li>
+					<a href="about.html">About</a>
+				</li>
+
+				<li>
+					<a href="contact.html">Contact</a>
+				</li>
 			</ul>
 		</div>
 
+		<!-- Modal Search -->
+		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+			<div class="container-search-header">
+				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+					<img src="images/icons/icon-close2.png" alt="CLOSE">
+				</button>
+
+				<form class="wrap-search-header flex-w p-l-15">
+					<button class="flex-c-m trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="plh3" type="text" name="search" placeholder="Search...">
+				</form>
+			</div>
+		</div>
 	</header>
 
 	<!-- Cart -->
@@ -237,325 +280,198 @@
 						</div>
 					</li>
 
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="images/item-cart-02.jpg" alt="IMG">
+						</div>
 
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								Converse All Star
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $39.00
+							</span>
+						</div>
+					</li>
+
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="images/item-cart-03.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								Nixon Porter Leather
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $17.00
+							</span>
+						</div>
+					</li>
 				</ul>
 				
-				
+				<div class="w-full">
+					<div class="header-cart-total w-full p-tb-40">
+						Total: $75.00
+					</div>
+
+					<div class="header-cart-buttons flex-w w-full">
+						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							View Cart
+						</a>
+
+						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+							Check Out
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 
+	
+	<!-- Modal1 -->
+
+
+
+		<div class="container">
+			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
+					<img src="images/icons/icon-close.png" alt="CLOSE">
+				</button>
+
+				<div class="row">
+					<div class="col-md-6 col-lg-7 p-b-30">
+						<div class="p-l-25 p-r-30 p-lr-0-lg">
+							<div class="wrap-slick3 flex-sb flex-w">
+								<div class="wrap-slick3-dots"></div>
+								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+
+								<div class="slick3 gallery-lb">
+									<div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+										<div class="wrap-pic-w pos-relative">
+											<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
+												<i class="fa fa-expand"></i>
+											</a>
+										</div>
+									</div>
+
+
+
 		
-
-	<!-- Slider -->
-	<section class="section-slide">
-		<div class="wrap-slick1">
-			<div class="slick1">
-				<div class="item-slick1" style="background-image: url(images/ImageSlider2.jpg);">
-					<div class="container h-full">
-						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-							
-								
-							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1" >
-                                    LEARNING IS EASY AS PI
-								</h2>
-							</div>
-                            <div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
-								<span class="ltext-101 cl2 respon2" >
-									WIth our personalised experience tutor
-								</span>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									READ MORE
-								</a>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="item-slick1" style="background-image: url(images/ImageSlider1.jpeg);">
-					<div class="container h-full">
-						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-							
-								
-							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1" style="color:white;">
-									STAY LIGHT YEARS AHEAD
-								</h2>
-							</div>
-                            
-                            <div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
-								<span class="ltext-101 cl2 respon2" style="color:white;">
-									Join us to achieve excellent results with our tailored last minutes preperation classes
-								</span>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									READ MORE
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="item-slick1" style="background-image: url(images/ImageSlider3.jpg);">
-					<div class="container h-full">
-						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-							
-								
-							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1" style="color:white;">
-									AIM HIGH
-								</h2>
-							</div>
-                            
-                            <div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
-								<span class="ltext-101 cl2 respon2" style="color:white;">
-									with our market-leading PSLE, GCE Oelvel and A Level tuition programmes in Singapore
-								</span>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									READ MORE
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-	<!-- Why Choose Us? -->
-	<section class="sec-blog bg0 p-t-60 p-b-90">
-		<div class="container">
-			<div class="p-b-66">
-				<h3 class="ltext-105 cl5 txt-center respon1">
-					Why Choose Us?
-				</h3>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-6 col-md-4 p-b-40">
-					<div class="blog-item">
-						<div class="hov-img0">
-							<a href="">
-								<img src="images/quality.jpg" alt="IMG-BLOG">
-							</a>
-						</div>
-
-						<div class="p-t-15">
-						
-
-							<h4 class="p-b-12">
-								<a href="" class="mtext-101 cl2 hov-cl1 trans-04">
-									Quality and Trust
-								</a>
-							</h4>
-
-							<p class="stext-108 cl6">
-								Ensure peace of mind when you hire a tutor through us, as our stringent verification process ensures all tutor credentials are vetted before recommendation.​
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 p-b-40">
-					<div class="blog-item">
-						<div class="hov-img0">
-							<a href="blog-detail.html">
-								<img src="images/Team.jpg" alt="IMG-BLOG">
-							</a>
-						</div>
-
-						<div class="p-t-15">
 					
-
-							<h4 class="p-b-12">
-								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									Extensive Tutor Database​
-								</a>
+					<div class="col-md-6 col-lg-5 p-b-30">
+						<div class="p-r-50 p-t-5 p-lr-0-lg">
+							<h4 class="mtext-105 cl2 js-name-detail p-b-14">
+								Lightweight Jacket
 							</h4>
 
-							<p class="stext-108 cl6">
-								With more than 11,000 tutors island-wide offering a wide range of subjects, your ideal tutor isn’t far away.​
+							<span class="mtext-106 cl2">
+								$58.79
+							</span>
+
+							<p class="stext-102 cl3 p-t-23">
+								Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
 							</p>
-						</div>
-					</div>
-				</div>
+							
+							<!--  -->
+							<div class="p-t-33">
+								<div class="flex-w flex-r-m p-b-10">
+									<div class="size-203 flex-c-m respon6">
+										Size
+									</div>
 
-				<div class="col-sm-6 col-md-4 p-b-40">
-					<div class="blog-item">
-						<div class="hov-img0">
-							<a href="blog-detail.html">
-								<img src="images/dedication.jpg" alt="IMG-BLOG">
-							</a>
-						</div>
-
-						<div class="p-t-15">
-					
-							<h4 class="p-b-12">
-								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									Speed and Dedication​
-								</a>
-							</h4>
-
-							<p class="stext-108 cl6">
-								We are dedicated to serving you promptly and to the best of our abilities. Our services are free-of-charge for students!​
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	
-	<!-- Product -->
-	<div class="bg0 m-t-23 p-b-140">
-		<div class="container">
-			<div class="p-b-10">
-				<h3 class="ltext-103 cl5">
-					Tutor Overview
-				</h3>
-			</div>
-			<div class="flex-w flex-sb-m p-b-52">
-				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						<a href="alltutor.html">All Tutors</a>
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						<a href="">Primary</a>
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						<a href="">Secondary</a>
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						<a href="">Junior College</a>
-					</button>
-
-	
-				</div>
-
-				<div class="flex-w flex-c-m m-tb-10">
-					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
-						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						 Filter
-					</div>
-				</div>
-				
-				<!-- Search product -->
-				<div class="dis-none panel-search w-full p-t-10 p-b-15">
-					<div class="bor8 dis-flex p-l-15">
-						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
-							<i class="zmdi zmdi-search"></i>
-						</button>
-
-						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
-					</div>	
-				</div>
-
-				<!-- Filter -->
-				<div class="dis-none panel-filter w-full p-t-10">
-					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
-						<div class="filter-col1 p-r-15 p-b-27">
-							<form action="alltutor2.html">
-								<div class="mtext-102 cl2 p-b-15">
-									Level
+									<div class="size-204 respon6-next">
+										<div class="rs1-select2 bor8 bg0">
+											<select class="js-select2" name="time">
+												<option>Choose an option</option>
+												<option>Size S</option>
+												<option>Size M</option>
+												<option>Size L</option>
+												<option>Size XL</option>
+											</select>
+											<div class="dropDownSelect2"></div>
+										</div>
+									</div>
 								</div>
 
-								<ul>
-									<select id="Level" name="caLevelrs" class="selectpicker">
-										<option value="Primary">Primary</option>
-										<option value="Secondary">Secondary</option>
-										<option value="JuniorCollege">Junior College</option>
-										<option value="OtherLevel">Others</option>
-									</select>
-								</ul>
-							</div>
+								<div class="flex-w flex-r-m p-b-10">
+									<div class="size-203 flex-c-m respon6">
+										Color
+									</div>
 
-							<div class="filter-col1 p-r-15 p-b-27">
-								<div class="mtext-102 cl2 p-b-15">
-									Subject
+									<div class="size-204 respon6-next">
+										<div class="rs1-select2 bor8 bg0">
+											<select class="js-select2" name="time">
+												<option>Choose an option</option>
+												<option>Red</option>
+												<option>Blue</option>
+												<option>White</option>
+												<option>Grey</option>
+											</select>
+											<div class="dropDownSelect2"></div>
+										</div>
+									</div>
 								</div>
 
-								<ul>
-									<select id="Subject" name="Subject" class="selectpicker">
-										<option value="English">English</option>
-										<option value="Math">Math</option>
-										<option value="Science">Science</option>
-										<option value="Chinese">Chinese</option>
-										<option value="OtherSubject">Others</option>
-									</select>
-								</ul>
-							</div>
+								<div class="flex-w flex-r-m p-b-10">
+									<div class="size-204 flex-w flex-m respon6-next">
+										<div class="wrap-num-product flex-w m-r-20 m-tb-10">
+											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-minus"></i>
+											</div>
 
-							<div class="filter-col1 p-r-15 p-b-27">
-								<div class="mtext-102 cl2 p-b-15">
-									Experience
-								</div>
+											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
 
-								<ul>
-									<select id="Experience" name="Experience" class="selectpicker">
-										<option value="0">No Preference</option>
-										<option value="1">1 year</option>
-										<option value="2">2 years</option>
-										<option value="3">3 years</option>
-										<option value="4">4 years</option>
-										<option value="5">5++ years</option>
-									</select>
-								</ul>
-							</div>
+											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-plus"></i>
+											</div>
+										</div>
 
-							<div class="filter-col1 p-r-15 p-b-27">
-								<div class="mtext-102 cl2 p-b-15">
-									Rates
-								</div>
-
-								<ul>
-									<select id="Rates" name="Rates" class="selectpicker">
-										<option value="volvo">No Preference</option>
-										<option value="30">less than $30</option>
-										<option value="40">less than $40</option>
-										<option value="50">less than $50</option>
-										<option value="60">less than $60</option>
-									</select>
-									  
-								</ul>
-							</div>
-
-							<div class="filter-col1 p-r-15 p-b-27">
-								<div class="mtext-102 cl2 p-b-15">
-									
+										<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+											Add to cart
+										</button>
+									</div>
 								</div>	
-								<input class="btn btn-primary" type="submit" value="Submit">
 							</div>
 
-						</form>
+							<!--  -->
+							<div class="flex-w flex-m p-l-100 p-t-40 respon7">
+								<div class="flex-m bor9 p-r-10 m-r-11">
+									<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
+										<i class="zmdi zmdi-favorite"></i>
+									</a>
+								</div>
 
-					
+								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+									<i class="fa fa-facebook"></i>
+								</a>
 
+								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
+									<i class="fa fa-twitter"></i>
+								</a>
+
+								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
+									<i class="fa fa-google-plus"></i>
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div id="booksTable1"></div>
-
-			</div>
-
-
 		</div>
-
-
+	
+	</div>
+		
 
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
@@ -911,7 +827,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!--===============================================================================================-->
 	<script src="vendor/sweetalert/sweetalert.min.js"></script>
 	<script>
-		$('.js-addwish-b2').on('click', function(e){
+		$('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
 			e.preventDefault();
 		});
 
@@ -964,7 +880,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		});
 	</script>
 <!--===============================================================================================-->
-<script src="js/main.js"></script>
+	<script src="js/main.js"></script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -985,6 +901,10 @@ crossorigin="anonymous"></script>
 src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
 integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 crossorigin="anonymous"></script>
+
+
+
+
 
 
 <script>
@@ -1061,7 +981,21 @@ crossorigin="anonymous"></script>
 										'</div>'+
 									'</div>'+
 								'</div>';
-						
+							
+					eachRow = 
+					
+						"<td>" + tutor.tutorID + "</td>" +
+						"<td>" + tutor.tutor_email + "</td>" +
+						"<td>" + tutor.name + "</td>" +
+						"<td>" + tutor.sex + "</td>";
+						"<td>" + tutor.age + "</td>";
+						"<td>" + tutor.subject + "</td>";
+						"<td>" + tutor.level + "</td>";
+						"<td>" + tutor.experience + "</td>";
+						"<td>" + tutor.about + "</td>";
+						"<td>" + tutor.rates + "</td>";
+					rows += "<tbody><tr>" + eachRow + "</tr></tbody>";
+					//$('#booksTable1').append(each);
 					
 				}
 
@@ -1081,6 +1015,5 @@ crossorigin="anonymous"></script>
 		} // error
 	});
 </script>
-
 </body>
 </html>

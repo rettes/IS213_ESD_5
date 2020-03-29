@@ -75,14 +75,9 @@
 			<!-- Topbar -->
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">
-						Free shipping for standard order over $100
-					</div>
-
+					
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							Help & FAQs
-						</a>
+						
 
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							My Account
@@ -93,7 +88,7 @@
 						</a>
 
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							USD
+							SGD
 						</a>
 					</div>
 				</div>
@@ -104,7 +99,7 @@
 					
 					<!-- Logo desktop -->		
 					<a href="#" class="logo">
-						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
+						<img src="images/TutorLab_Logo.png" alt="IMG-LOGO">
 					</a>
 
 					<!-- Menu desktop -->
@@ -112,48 +107,28 @@
 						<ul class="main-menu">
 							<li>
 								<a href="index.html">Home</a>
-								<ul class="sub-menu">
-									<li><a href="index.html">Homepage 1</a></li>
-									<li><a href="home-02.html">Homepage 2</a></li>
-									<li><a href="home-03.html">Homepage 3</a></li>
-								</ul>
 							</li>
 
-							<li class="active-menu">
-								<a href="product.html">Shop</a>
-							</li>
 
 							<li class="label1" data-label1="hot">
-								<a href="shoping-cart.html">Features</a>
+								<a href="shoping-cart.html">Tutor</a>
 							</li>
 
 							<li>
-								<a href="blog.html">Blog</a>
+								<a href="blog.html">Appointment</a>
 							</li>
 
-							<li>
-								<a href="about.html">About</a>
-							</li>
-
-							<li>
-								<a href="contact.html">Contact</a>
-							</li>
 						</ul>
 					</div>	
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
-						</div>
+
 
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
-						<a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
 					</div>
 				</nav>
 			</div>	
@@ -364,19 +339,19 @@
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						All Tutors
+						<a href="alltutor.html">All Tutors</a>
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						Primary
+						<a href="">Primary</a>
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						Secondary
+						<a href="">Secondary</a>
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						Junior College
+						<a href="">Junior College</a>
 					</button>
 
 	
@@ -387,12 +362,6 @@
 						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
 						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
 						 Filter
-					</div>
-
-					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
-						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
-						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						Search
 					</div>
 				</div>
 				
@@ -411,118 +380,81 @@
 				<div class="dis-none panel-filter w-full p-t-10">
 					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
 						<div class="filter-col1 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Level
+							<form action="alltutor2.html">
+								<div class="mtext-102 cl2 p-b-15">
+									Level
+								</div>
+
+								<ul>
+									<select id="Level" name="caLevelrs" class="selectpicker">
+										<option value="Primary">Primary</option>
+										<option value="Secondary">Secondary</option>
+										<option value="JuniorCollege">Junior College</option>
+										<option value="OtherLevel">Others</option>
+									</select>
+								</ul>
 							</div>
 
-							<ul>
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Primary
-									</a>
-								</li>
+							<div class="filter-col1 p-r-15 p-b-27">
+								<div class="mtext-102 cl2 p-b-15">
+									Subject
+								</div>
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Secondary
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Junior College
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Others
-									</a>
-								</li>
-							</ul>
-						</div>
-
-						<div class="filter-col1 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Subject
+								<ul>
+									<select id="Subject" name="Subject" class="selectpicker">
+										<option value="English">English</option>
+										<option value="Math">Math</option>
+										<option value="Science">Science</option>
+										<option value="Chinese">Chinese</option>
+										<option value="OtherSubject">Others</option>
+									</select>
+								</ul>
 							</div>
 
-							<ul>
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										English
-									</a>
-								</li>
+							<div class="filter-col1 p-r-15 p-b-27">
+								<div class="mtext-102 cl2 p-b-15">
+									Experience
+								</div>
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Math
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Science
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Chinese
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Others
-									</a>
-								</li>
-							</ul>
-						</div>
-
-						<div class="filter-col2 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Price
+								<ul>
+									<select id="Experience" name="Experience" class="selectpicker">
+										<option value="0">No Preference</option>
+										<option value="1">1 year</option>
+										<option value="2">2 years</option>
+										<option value="3">3 years</option>
+										<option value="4">4 years</option>
+										<option value="5">5++ years</option>
+									</select>
+								</ul>
 							</div>
 
-							<ul>
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										All
-									</a>
-								</li>
+							<div class="filter-col1 p-r-15 p-b-27">
+								<div class="mtext-102 cl2 p-b-15">
+									Rates
+								</div>
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$0.00 - $50.00
-									</a>
-								</li>
+								<ul>
+									<select id="Rates" name="Rates" class="selectpicker">
+										<option value="volvo">No Preference</option>
+										<option value="30">less than $30</option>
+										<option value="40">less than $40</option>
+										<option value="50">less than $50</option>
+										<option value="60">less than $60</option>
+									</select>
+									  
+								</ul>
+							</div>
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$50.00 - $100.00
-									</a>
-								</li>
+							<div class="filter-col1 p-r-15 p-b-27">
+								<div class="mtext-102 cl2 p-b-15">
+									
+								</div>	
+								<input class="btn btn-primary" type="submit" value="Submit">
+							</div>
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$100.00 - $150.00
-									</a>
-								</li>
+						</form>
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$150.00 - $200.00
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$200.00+
-									</a>
-								</li>
-							</ul>
-						</div>
+					
 
 					</div>
 				</div>
@@ -531,13 +463,6 @@
 
 			</div>
 
-
-			<!-- Load more -->
-			<div class="flex-c-m flex-w w-full p-t-45">
-				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-					Load More
-				</a>
-			</div>
 		</div>
 	</div>
 		
@@ -1003,7 +928,7 @@ crossorigin="anonymous"></script>
 			const data = await response.json();
 			//console.log(data);
 			var tutors = data.tutor; //the arr is in data.books of the JSON data
-			console.log(tutors);
+			//console.log(tutors);
 			// array or array.length are falsy
 			if (!tutors || !tutors.length) {
 				showError('Books list empty or undefined.')
@@ -1029,12 +954,15 @@ crossorigin="anonymous"></script>
 				
 										'<div class="block2-txt flex-w flex-t p-t-14">'+
 											'<div class="block2-txt-child1 flex-col-l ">'+
-												'Name:<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">'+
-													tutor.name+
+												'Name: '+tutor.name+'<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">'+
+													
 												'</a>'+
 				
 												'<span class="stext-105 cl3">'+
-													'$16.64'+
+													'Subject: '+ tutor.subject +
+												'</span>'+
+												'<span class="stext-105 cl3">'+
+													'Rate: $'+ tutor.rates +
 												'</span>'+
 											'</div>'+
 				
@@ -1063,7 +991,10 @@ crossorigin="anonymous"></script>
 					rows += "<tbody><tr>" + eachRow + "</tr></tbody>";
 					//$('#booksTable1').append(each);
 					
-				}console.log(tutor1);
+				}
+
+
+
 				each+='</div>';
 					$('#booksTable1').append(each);
 				// add all the rows to the table
