@@ -5,7 +5,7 @@ from os import environ
 
 import pika
 import json
-import requests
+
 
 # initiate Flask
 app = Flask(__name__) 

@@ -4,13 +4,13 @@ from flask_cors import CORS
 from os import environ
 
 import json
-import requests
 from datetime import datetime
 
 
 
 # initiate Flask
 app = Flask(__name__) 
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/cart_service'
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('cart_serviceURL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
@@ -65,7 +65,6 @@ def get_all(customerID):
             
 
     except Exception as e:
-        print(cart_details)
         print (e)
         return jsonify({"message": "Cart not found."}), 404
 

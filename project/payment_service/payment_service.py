@@ -13,6 +13,7 @@ from datetime import datetime
 
  
 app = Flask(__name__)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/payment_service'
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('payment_serviceURL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
@@ -86,14 +87,17 @@ def send_order(payment):
 @app.route("/payments", methods=['POST'])
 def make_payment():
     try:
+        result = ""
         info = request.get_json()
         print(info)
         customerID = info["customerID"]
         cartserviceURL = "http://localhost:5006/cart/" + str(customerID)
-        r= requests.get(cartserviceURL)
+        print(cartserviceURL)
+        r= requests.get(cartserviceURL).json()
         print("Informed Cart service to send data over.")
         result = r.text
-    except Exception as e: 
+    except Exception as e:
+        print("there is an error here") 
         print(e)
     
     data = json.loads(result)
