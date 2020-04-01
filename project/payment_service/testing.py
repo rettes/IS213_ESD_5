@@ -88,12 +88,22 @@ def send_order(payment):
 
 @app.route("/payments", methods=['POST'])
 def make_payment():
-    info = request.get_json()
-    print(info)
-    customerID = info["customerID"]
-    cartserviceURL = "http://cartservice:5006/cart/" + str(customerID)
-    r= requests.get(cartserviceURL)
-    cartData = json.loads(r.text)["Cart"]
+    try:
+        info = request.get_json()
+        print(info)
+        customerID = info["customerID"]
+        cartserviceURL = "http://host.docker.internal:5006/cart/" + str(customerID)
+        print(cartserviceURL)
+        r= requests.get(cartserviceURL)
+        if r:
+            print('YES')
+        print("Informed Cart service to send data over.")
+        result = r.text
+    except Exception as e:
+        print("there is an error here") 
+        print(e)
+    
+    cartData = json.loads(result)["Cart"]
     
     # return data
     # cartData = data["Cart"]
