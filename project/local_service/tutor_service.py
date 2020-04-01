@@ -21,6 +21,7 @@ class Tutor(db.Model):
     experience = db.Column(db.Integer, nullable=False)
     about = db.Column(db.String(1000), nullable=False)
     rates = db.Column(db.Integer, nullable=False)
+    image = image = db.Column(db.String(1000), nullable=False)
 
     def init(tutorID, tutor_email, name, sex, age, subject, level, experience, about, rates):
         self.tutorID = tutorID
@@ -33,10 +34,11 @@ class Tutor(db.Model):
         self.experience = experience
         self.about = about
         self.rates = rates
+        self.image = image
 
 
     def json(self):
-        return {"tutorID": self.tutorID, "tutor_email": self.tutor_email, "name": self.name, "sex": self.sex, "age": self.age, "subject": self.subject, "level": self.level, "experience": self.experience,"about": self.about, "rates": self.rates}
+        return {"tutorID": self.tutorID, "tutor_email": self.tutor_email, "name": self.name, "sex": self.sex, "age": self.age, "subject": self.subject, "level": self.level, "experience": self.experience,"about": self.about, "rates": self.rates, "image": self.image}
 
 @app.route("/tutor")
 def get_all():
@@ -45,6 +47,35 @@ def get_all():
 @app.route("/tutor/<string:tutorID>")
 def find_by_tutorID(tutorID):
     tutor = Tutor.query.filter_by(tutorID=tutorID).all()
+    if tutor:
+        return jsonify({"tutor": [tutor.json() for tutor in tutor]})
+    return jsonify({"message": "Tutor not found."}), 404
+
+@app.route("/tutor", methods=['POST'])
+def filter_tutor():
+    info = request.get_json()
+    subject = info["subject"]
+    experience = info["experience"]
+    rates = info["rates"]
+    level = info["level"]
+    if subject == "":
+        if level == "":
+            tutor = Tutor.query.filter(Tutor.experience>=experience,
+                                    Tutor.rates<=rates).all()
+        else:
+            tutor = Tutor.query.filter(Tutor.level==level,
+                                        Tutor.experience>=experience,
+                                        Tutor.rates<=rates).all()
+    elif subject != "":
+        if level == "":
+            tutor = Tutor.query.filter(Tutor.subject==subject,
+                                        Tutor.experience>=experience,
+                                        Tutor.rates<=rates).all()
+        else:
+            tutor = Tutor.query.filter(Tutor.level==level,
+                                        Tutor.subject==subject,
+                                        Tutor.experience>=experience,
+                                        Tutor.rates<=rates).all()
     if tutor:
         return jsonify({"tutor": [tutor.json() for tutor in tutor]})
     return jsonify({"message": "Tutor not found."}), 404
