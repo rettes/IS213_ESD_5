@@ -679,7 +679,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									// '<div id="paypal-button"></div>'+
 							// 	'</div>'+
 							// '</div>';
-					
 				generateButton(total_price);
 				$('#booksTable1').append(each);
 			
@@ -693,8 +692,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 		$(function(){
 
-			//CID is hardcoded
-		    var serviceURL = "http://localhost:5006/cart/1";
+			CID = sessionStorage.getItem("CID");
+			console.log(CID)
+
+		    var serviceURL = "http://localhost:5006/cart/"+CID;
 		    getData(serviceURL);
 		});
 
@@ -761,6 +762,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				}
 			}, '#paypal-button');
 		}
+
 	</script>
 
 </body>

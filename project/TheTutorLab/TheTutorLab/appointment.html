@@ -679,9 +679,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		}
 
 		$(function(){
+			CID = sessionStorage.getItem("CID");
 
-			//CID is hardcoded
-		    var serviceURL = "http://localhost:5003/appointment/1";
+
+		    var serviceURL = "http://localhost:5003/appointment/"+CID;
 		    getData(serviceURL);
 		});
 
