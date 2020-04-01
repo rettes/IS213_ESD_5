@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Shoping Cart</title>
+	<title>Appointments</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -330,7 +330,7 @@
 			</a>
 
 			<span class="stext-109 cl4">
-				Shoping Cart
+				Appointment
 			</span>
 		</div>
 	</div>
@@ -359,15 +359,12 @@
 								</script> -->
 
 						<div id="booksTable1"></div>
-					</div>
-					<!-- <div id="paypal-button"></div> -->
-				</div>			
+					<!-- </div>
+				</div>			 -->
 			</div>
 		</div>
 
-						<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
-		
-							<div id="paypal-button" >
+						<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">						
 							</div>
 						</div>
 					</div>
@@ -607,9 +604,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	        const response = await fetch(serviceURL, requestParam);
 	        data = await response.json();
 	        console.log(data);
-			cart_view = data.Cart;
-			console.log(cart_view[0])
-			// array or array.length are falsy
+			appt_view = data.appointments;
+			console.log(appt_view)
 			
 				var rows = "";
 
@@ -618,21 +614,18 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								'<tr class="table_head">'+
 									'<th class="column-1"></th>'+
 									'<th class="column-2">Tutor</th>'+
-									'<th class="column-3">Price</th>'+
-									'<th class="column-4">Subject</th>'+
-									'<th class="column-5">Level</th>'+
-									'<th class="column-6">Appointment Time</th>'+
+									'<th class="column-3">Subject</th>'+
+									'<th class="column-4">Level</th>'+
+									'<th class="column-5">Appointment Time</th>'+
 								'</tr>';
 				
 				var tutor1 = {};
 
-				var total_price = 0;
-
-				for (const tutor of cart_view) {
+				for (const tutor of appt_view) {
 
 					// console.log(tutor1)
 
-					tutor1[tutor.tutorID]=[tutor.tutorID,tutor.customerID,tutor.subject,tutor.level,tutor.timeslot,tutor.price];
+					tutor1[tutor.tutorID]=[tutor.appointmentID,tutor.tutorID,tutor.customerID,tutor.subject,tutor.level,tutor.timeslot];
 					
 					tutor_name = await getTutorName("http://localhost:5001/tutor/"+tutor.tutorID);
 
@@ -645,43 +638,38 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 										'</div>'+
 									'</td>'+
 									'<td class="column-2">'+ tutor_name + '</td>'+
-									'<td class="column-3">$' + tutor.price + '</td>'+
-									'<td class="column-4">' + tutor.subject + '</td>'+
-									'<td class="column-5">' + tutor.level + '</td>'+
-									'<td class="column-6">' + tutor.timeslot + '</td>'+
-									'</tr>';
-					total_price += tutor.price;
-
+									'<td class="column-3">' + tutor.subject + '</td>'+
+									'<td class="column-4">' + tutor.level + '</td>'+
+									'<td class="column-5">' + tutor.timeslot + '</td>'+
+									'</tr>';	
 					
 				}
 				// console.log(total_price);
-				each+=	'</table>'+
-							'</div>'+
-							'<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">'+
-								'<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">'+
-									'<h4 class="mtext-109 cl2 p-b-30">'+
-										'Cart Total'+
-									'</h4>'+
+				// each+=	'</table>'+
+				// 			'</div>'+
+				// 			'<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">'+
+				// 				'<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">'+
+				// 					'<h4 class="mtext-109 cl2 p-b-30">'+
+				// 						'Cart Total'+
+				// 					'</h4>'+
 
-									'<div class="flex-w flex-t p-t-27 p-b-33">'+
-										'<div class="size-208">'+
-											'<span class="mtext-101 cl2">'+
-												'Total:'+
-											'</span>'+
-										'</div>'+
+				// 					'<div class="flex-w flex-t p-t-27 p-b-33">'+
+				// 						'<div class="size-208">'+
+				// 							'<span class="mtext-101 cl2">'+
+				// 								'Total:'+
+				// 							'</span>'+
+				// 						'</div>'+
 
-										'<div class="size-209 p-t-1">'+
-											'<span class="mtext-110 cl2">$'+
-												total_price+
-											'</span>';
+				// 						'<div class="size-209 p-t-1">'+
+				// 							'<span class="mtext-110 cl2">$'+
+				// 								total_price+
+				// 							'</span>';
 									// 	'</div>'+
 									// '</div>'+
-									// '<div id="paypal-button"></div>'+
 							// 	'</div>'+
 							// '</div>';
-				generateButton(total_price);
+					
 				$('#booksTable1').append(each);
-			
 			
 
 	    } 
@@ -691,11 +679,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		}
 
 		$(function(){
-
 			CID = sessionStorage.getItem("CID");
-			console.log(CID)
 
-		    var serviceURL = "http://localhost:5006/cart/"+CID;
+
+		    var serviceURL = "http://localhost:5003/appointment/"+CID;
 		    getData(serviceURL);
 		});
 
@@ -718,52 +705,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 	</script>
 
-	<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-	<script>
-
-		function generateButton(cost){
-			//PayPal API
-			paypal.Button.render({
-				// Configure environment
-				env: 'sandbox',
-				client: {
-				sandbox: 'AUeZaD56BGfH4-z8TGcUA2H6Bqgg80VIowCG5WM3qSZAEGBkacCgoMUq5TCPa6BoS0VTqNzTCl6IlEze',
-				production: 'demo_production_client_id'
-				},
-				// Customize button (optional)
-				locale: 'en_US',
-				style: {
-				size: 'small',
-				color: 'gold',
-				shape: 'pill',
-				},
-
-				// Enable Pay Now checkout flow (optional)
-				commit: true,
-
-				// Set up a payment
-				payment: function(data, actions) {
-				return actions.payment.create({
-					transactions: [{
-					amount: {
-						total: cost,
-						currency: 'SGD'
-					}
-					}]
-				});
-				},
-
-				// Execute the payment
-				onAuthorize: function(data, actions) {
-				return actions.payment.execute().then(function() {
-					// Show a confirmation message to the buyer
-					window.alert('Payment Successful!');
-				});
-				}
-			}, '#paypal-button');
-		}
-
-	</script>
 
 </body>
 </html>
