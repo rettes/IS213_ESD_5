@@ -64,10 +64,12 @@ def find_by_customerid(customerID):
     return jsonify({"message": "Payment not found."}), 404
 
 def send_order(payment):
-    hostname = "localhost" # default broker hostname. Web management interface default at http://localhost:15672
+    hostname = "10.124.131.4" # default broker hostname. Web management interface default at http://localhost:15672
     port = 5672 # default messaging port.
     # connect to the broker and set up a communication channel in the connection
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host=hostname, port=port))
+    vhost = 'testvhost'
+    credentials = pika.PlainCredentials("rettes", "rettes23")
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host=hostname,virtual_host=vhost ,port=port,credentials = credentials))
         # Note: various network firewalls, filters, gateways (e.g., SMU VPN on wifi), may hinder the connections;
         # If "pika.exceptions.AMQPConnectionError" happens, may try again after disconnecting the wifi and/or disabling firewalls
     channel = connection.channel()
@@ -87,22 +89,25 @@ def send_order(payment):
 @app.route("/payments", methods=['POST'])
 def make_payment():
     try:
-        result = ""
         info = request.get_json()
         print(info)
         customerID = info["customerID"]
-        cartserviceURL = "http://localhost:5006/cart/" + str(customerID)
+        cartserviceURL = "http://172.17.0.1:5006/cart/" + str(customerID)
         print(cartserviceURL)
-        r= requests.get(cartserviceURL).json()
+        r= requests.get(cartserviceURL)
+        if r:
+            print('YES')
         print("Informed Cart service to send data over.")
         result = r.text
     except Exception as e:
         print("there is an error here") 
         print(e)
     
-    data = json.loads(result)
-    data = data['Cart']
-    for item in data:
+    cartData = json.loads(result)["Cart"]
+    
+    # return data
+    # cartData = data["Cart"]
+    for item in cartData:
         item['payment_date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         print(item)
         payment = Payment(**item) 
@@ -113,8 +118,7 @@ def make_payment():
             print(e)
             print(info)
             return jsonify({"message": "An error occurred during payment."}), 500
-
-    send_order(data)
+    send_order(cartData)
     print("Completed notification")
 
 

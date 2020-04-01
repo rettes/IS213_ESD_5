@@ -4,5 +4,3 @@ Flask-SQLAlchemy==2.4.1
 mysql-connector-python==8.0.19
 pika==1.1.0
 requests==2.22.0
-requests[security]==2.7.0  # not 2.18.x
-cryptography==2.8
