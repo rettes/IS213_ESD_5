@@ -1069,6 +1069,18 @@ crossorigin="anonymous"></script>
 		   
 		} // error
 	});
+    
+        function SetID(){
+      var CID = prompt("Please enter your CID", 1);
+      var password = prompt("Please enter your password", "");
+      if (CID != null) {
+       document.getElementById("setCID").innerHTML =
+       "Customer ID: " + CID;
+       //Set CID here
+       sessionStorage.setItem("CID", CID);
+       console.log(CID);
+      }
+ }
 </script>
 
 </body>

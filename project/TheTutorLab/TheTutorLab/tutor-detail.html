@@ -841,20 +841,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			}
 
 
-			$(function(){
-
-				console.log(window.location.href)
-				//split this to get TID
-				get_URL = window.location.href
-				TID = get_URL.split("tid=")[1]
-				console.log(TID)
-
-				CID = sessionStorage.getItem("CID");
-				console.log("CID is "+ CID)
-
-			    var serviceURL = "http://localhost:5001/tutor/"+TID;
-			    getData(serviceURL);
-			});
 
 
 			async function postData(serviceURL, requestBody) {
@@ -897,6 +883,20 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				//POST to cart service
 				postData(serviceURL, requestBody);
 			}
+			$(function(){
+
+console.log(window.location.href)
+//split this to get TID
+get_URL = window.location.href
+TID = get_URL.split("tid=")[1]
+console.log(TID)
+
+CID = sessionStorage.getItem("CID");
+console.log("CID is "+ CID)
+
+    var serviceURL = "http://localhost:5001/tutor/"+TID;
+    getData(serviceURL);
+});
 
 
 		</script>
