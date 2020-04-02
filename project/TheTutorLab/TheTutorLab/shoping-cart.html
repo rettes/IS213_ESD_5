@@ -651,6 +651,35 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		}
 
 
+		async function makePayment() {
+		
+				var serviceURL = "http://localhost:5005/payments" ;
+				
+				var requestBody = {
+			        customerID: CID
+			    };
+
+				//POST to payment service
+				postData(serviceURL, requestBody);
+	
+			}
+
+		async function postData(serviceURL, requestBody) {
+			    var requestParam = {
+			        headers: { "content-type": "application/json; charset=UTF-8" },
+			        mode: 'cors', // other options: no-cors, etc.
+			        method: 'POST',
+			        body: JSON.stringify(requestBody)
+			    }
+		    try {
+		        const response = await fetch(serviceURL, requestParam);
+		        data = await response.json();
+		        console.log(data);
+		    } catch (error) {
+		        console.error(error);
+		    }
+			}
+
 	</script>
 
 	<script src="https://www.paypalobjects.com/api/checkout.js"></script>
@@ -693,6 +722,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				return actions.payment.execute().then(function() {
 					// Show a confirmation message to the buyer
 					window.alert('Payment Successful!');
+					makePayment();
 					window.location.replace("index.html");
 				});
 				}
