@@ -509,9 +509,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		    try {
 		        const response = await fetch(serviceURL, requestParam);
 		        data = await response.json();
-		        console.log(data);
+		        //console.log(data);
 				tutor = data.tutor[0];
-				console.log(tutor.name)
+				//console.log(tutor.name)
 			}
 			catch (error) {
 		        console.error(error);
@@ -527,9 +527,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	    try {
 	        const response = await fetch(serviceURL, requestParam);
 	        data = await response.json();
-	        console.log(data);
+	        //console.log(data);
 			cart_view = data.Cart;
-			console.log(cart_view[0])
+			//console.log(cart_view[0])
 			// array or array.length are falsy
 			
 				var rows = "";
@@ -551,18 +551,20 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 				for (const tutor of cart_view) {
 
-					// console.log(tutor1)
+					//console.log(tutor)
 
 					tutor1[tutor.tutorID]=[tutor.tutorID,tutor.customerID,tutor.subject,tutor.level,tutor.timeslot,tutor.price];
 					
 					tutor_name = await getTutorName("http://localhost:5001/tutor/"+tutor.tutorID);
+					tutor_image = await getTutorImage("http://localhost:5001/tutor/"+tutor.tutorID);
+					
 
-					//console.log(tutor_name);
+					console.log(tutor_name);
 
 					each += '<tr class="table_row">'+	
 								'<td class="column-1">'+
 										'<div class="how-itemcart1">'+
-											'<img src="images/item-cart-04.jpg" alt="IMG">'+
+											'<img src="'+tutor_image+'" alt="IMG">'+
 										'</div>'+
 									'</td>'+
 									'<td class="column-2">'+ tutor_name + '</td>'+
@@ -611,7 +613,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		$(function(){
 
 			CID = sessionStorage.getItem("CID");
-			console.log(CID)
+			//console.log(CID)
 
 		    var serviceURL = "http://localhost:5006/cart/"+CID;
 		    getData(serviceURL);
@@ -626,12 +628,27 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		        const response = await fetch(serviceURL, requestParam);
 		        data = await response.json();
 		       	tutor = data.tutor;
-				console.log(tutor[0].name);
+				//console.log(tutor[0].name);
 				return tutor[0].name;
 		    } catch (error) {
 		        console.error(error);
 		    }
 		}	
+		async function getTutorImage(serviceURL){
+			let requestParam = {
+	        mode: 'cors', // allow cross-origin resource sharing
+		        method: 'GET',
+		    }
+		    try {
+		        const response = await fetch(serviceURL, requestParam);
+		        data = await response.json();
+		       	tutor = data.tutor;
+				//console.log(tutor[0].name);
+				return tutor[0].image;
+		    } catch (error) {
+		        console.error(error);
+		    }
+		}
 
 
 	</script>
@@ -689,7 +706,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
        "Customer ID: " + CID;
        //Set CID here
        sessionStorage.setItem("CID", CID);
-       console.log(CID);
+       //console.log(CID);
       }
  }
 	</script>
