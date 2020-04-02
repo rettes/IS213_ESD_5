@@ -9,7 +9,7 @@ import json
 
 # initiate Flask
 app = Flask(__name__) 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/appointmnet_service'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/appointment_service'
 #app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('appointment_serviceURL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
@@ -46,6 +46,13 @@ def get_all():
 @app.route("/appointment/<int:appointmentID>")
 def find_by_appointmentID(appointmentID):
     appointments = Appointment.query.filter_by(appointmentID=appointmentID).first()
+    if appointments:
+        return jsonify(appointments.json())
+    return jsonify({"message": "Appointment not found."}), 404
+
+@app.route("/appointment/test/<int:customerID>")
+def find_by_customerID(customerID):
+    appointments = Appointment.query.filter_by(customerID=customerID)
     if appointments:
         return jsonify(appointments.json())
     return jsonify({"message": "Appointment not found."}), 404
