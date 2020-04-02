@@ -43,13 +43,13 @@ def send_email():
     for item in info:
         check += 1
     #getting name and email from client to email to them.
-        accountURL = "http://localhost:5004/account/" + str(item['customerID'])
+        accountURL = "http://accountservice:5004/account/" + str(item['customerID'])
         r= requests.get(accountURL)
         result = r.text
         customerData = json.loads(result)['Account']
 
         #getting name and email from tutor to email to them.
-        tutorURL = "http://localhost:5001/tutor/" + str(item['tutorID'])
+        tutorURL = "http://tutorservice:5001/tutor/" + str(item['tutorID'])
         r = requests.get(tutorURL)
         result = r.text
         tutorData = json.loads(result)['tutor'][0]

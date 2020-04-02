@@ -8,11 +8,9 @@ import requests
 
 def receiveAppointmentUpdate():
     print("testing")
-    hostname = "10.124.131.4"
-    vhost = 'testvhost'
+    hostname = "host.docker.internal"
     port = 5672
-    credentials = pika.PlainCredentials("rettes", "rettes23")
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host = hostname,virtual_host=vhost , port= port ,credentials = credentials))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host = hostname, port= port))
     channel = connection.channel()
 
     exchangename = "payment_fanout"
@@ -26,7 +24,7 @@ def receiveAppointmentUpdate():
 
 def callback(channel,method, properties, body):
     print("Receive from payment.")
-    appointmentServiceURL = "http://172.17.0.1:5003/appointment"
+    appointmentServiceURL = "http://appointmentservice:5003/appointment"
     r= requests.post(appointmentServiceURL, json = json.loads(body))
     print("success")
 

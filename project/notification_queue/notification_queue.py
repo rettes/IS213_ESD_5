@@ -8,7 +8,7 @@ import requests
 
 def receiveNotificationUpdate():
     print("Notification service is working right now.")
-    hostname = "localhost"
+    hostname = "host.docker.internal"
     port = 5672
     connection = pika.BlockingConnection(pika.ConnectionParameters(host = hostname , port= port))
     channel = connection.channel()
@@ -24,7 +24,7 @@ def receiveNotificationUpdate():
 
 def callback(channel,method, properties, body):
     print("Receive from payment.")
-    notificationURL = "http://localhost:5010/notification"
+    notificationURL = "http://notificationservice:5010/notification"
     print("Reaching notification")
     r= requests.post(notificationURL, json = json.loads(body))
     print("success")

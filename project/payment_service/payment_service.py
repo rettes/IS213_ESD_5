@@ -67,9 +67,7 @@ def send_order(payment):
     hostname = "host.docker.internal" # default broker hostname. Web management interface default at http://localhost:15672
     port = 5672 # default messaging port.
     # connect to the broker and set up a communication channel in the connection
-    vhost = 'testvhost'
-    credentials = pika.PlainCredentials("guest", "guest")
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host=hostname,virtual_host=vhost ,port=port,credentials = credentials))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host=hostname ,port=port))
         # Note: various network firewalls, filters, gateways (e.g., SMU VPN on wifi), may hinder the connections;
         # If "pika.exceptions.AMQPConnectionError" happens, may try again after disconnecting the wifi and/or disabling firewalls
     channel = connection.channel()
