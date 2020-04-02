@@ -48,7 +48,7 @@
 					<div class="right-top-bar flex-w h-full">
 						
 
-						<a href="#" id="setCID" class="flex-c-m trans-04 p-lr-25" onclick="SetID()">
+						<a href="login.html"  class="flex-c-m trans-04 p-lr-25" >
                          Login with Customer ID
                       </a>
 
@@ -882,6 +882,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 				//POST to cart service
 				postData(serviceURL, requestBody);
+				alert("Successful added to cart!");
+				window.location.replace("shoping-cart.html");   
 			}
 			$(function(){
 

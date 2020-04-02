@@ -42,7 +42,7 @@
 					<div class="right-top-bar flex-w h-full">
 						
 
-						<a href="#" id="setCID" class="flex-c-m trans-04 p-lr-25" onclick="SetID()">
+						<a href="login.html"  class="flex-c-m trans-04 p-lr-25" >
                          Login with Customer ID
                       </a>
 
@@ -676,11 +676,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				return actions.payment.execute().then(function() {
 					// Show a confirmation message to the buyer
 					window.alert('Payment Successful!');
+					window.location.replace("index.html");
 				});
 				}
 			}, '#paypal-button');
 		}
-function SetID(){
+		function SetID(){
       var CID = prompt("Please enter your CID", 1);
       var password = prompt("Please enter your password", "");
       if (CID != null) {

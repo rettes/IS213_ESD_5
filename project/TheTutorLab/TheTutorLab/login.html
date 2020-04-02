@@ -248,7 +248,8 @@
                             sessionStorage.setItem("CID", accounts["Accounts"][0]['customerID']);
                             sessionStorage.setItem("name", accounts["Accounts"][0]['name']);
                             console.log(sessionStorage.getItem("CID"));
-                            window.location.replace("index.php");   
+                            alert("Welcome "+accounts["Accounts"][0]['name']+"!");
+                            window.location.replace("index.html");   
                         }
                         
                         

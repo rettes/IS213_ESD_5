@@ -80,7 +80,7 @@
 					<div class="right-top-bar flex-w h-full">
 						
 
-						<a href="#" id="setCID" class="flex-c-m trans-04 p-lr-25" onclick="SetID()">
+						<a href="login.html"  class="flex-c-m trans-04 p-lr-25" >
                          Login with Customer ID
                       </a>
 

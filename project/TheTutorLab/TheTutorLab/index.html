@@ -77,11 +77,12 @@
 				<div class="content-topbar flex-sb-m h-full container">
 					
 					<div class="right-top-bar flex-w h-full">
-						
-
-						<a href="#" id="setCID" class="flex-c-m trans-04 p-lr-25" onclick="SetID()">
-                         Login with Customer ID
-                      </a>
+					
+					
+					<a href="login.html"  class="flex-c-m trans-04 p-lr-25" >
+                         Login
+					  </a>
+					  
 
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							EN
@@ -979,10 +980,6 @@ crossorigin="anonymous"></script>
 <script>
 	// Helper function to display error message
 	function showError(message) {
-		// Hide the table and button in the event of error
-		$('#booksTable').hide();
-		$('#addBookBtn').hide();
-
 		// Display an error under the main container
 		$('#main-container')
 			.append("<label>"+message+"</label>");
@@ -1069,8 +1066,11 @@ crossorigin="anonymous"></script>
 		   
 		} // error
 	});
-    
-        function SetID(){
+	
+</script>
+<script>
+
+function SetID(){
       var CID = prompt("Please enter your CID", 1);
       var password = prompt("Please enter your password", "");
       if (CID != null) {
@@ -1082,6 +1082,5 @@ crossorigin="anonymous"></script>
       }
  }
 </script>
-
 </body>
 </html>
