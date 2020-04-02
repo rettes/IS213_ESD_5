@@ -239,16 +239,16 @@
                         const data = await response.json();
                         
                         var accounts = data; //the arr is in data.books of the JSON data
-                        console.log(accounts["Accounts"][0]['name']);
+                        
                         //console.log(tutors);
                         // array or array.length are falsy
-                        if (!accounts["Accounts"][0]['customerID'].length) {
+                        if (accounts["Accounts"][0]['customerID'].length==0) {
                             showError('Incorrect Username or password! Please try again!')
                         } else {
                             sessionStorage.setItem("CID", accounts["Accounts"][0]['customerID']);
                             sessionStorage.setItem("name", accounts["Accounts"][0]['name']);
-                            document.location.href="index.html";
                             console.log(sessionStorage.getItem("CID"));
+                            window.location.replace("index.php");   
                         }
                         
                         
