@@ -42,7 +42,7 @@
 					<div class="right-top-bar flex-w h-full">
 						
 
-						<a href="#" id="setCID" class="flex-c-m trans-04 p-lr-25" onclick="SetID()">
+						<a href="login.html"  class="flex-c-m trans-04 p-lr-25" >
                          Login with Customer ID
                       </a>
 
@@ -194,7 +194,7 @@
 	<form class="bg0 p-t-75 p-b-85">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+				<div class="col-12 col-xl-12 m-lr-auto m-b-50">
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
 						
 								</tr>
@@ -218,8 +218,6 @@
 			</div>
 		</div>
 
-						<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">						
-							</div>
 						</div>
 					</div>
 				</div>
@@ -443,14 +441,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	        data = await response.json();
 	        console.log(data);
 			appt_view = data.appointments;
-			console.log(appt_view)
+			console.log(appt_view);
 			
 				var rows = "";
 
 				each = '<div class="wrap-table-shopping-cart">'+
 							'<table class="table-shopping-cart">'+
 								'<tr class="table_head">'+
-									'<th class="column-1"></th>'+
+									'<th class="column-1">Image</th>'+
 									'<th class="column-2">Tutor</th>'+
 									'<th class="column-3">Subject</th>'+
 									'<th class="column-4">Level</th>'+
@@ -466,13 +464,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					tutor1[tutor.tutorID]=[tutor.appointmentID,tutor.tutorID,tutor.customerID,tutor.subject,tutor.level,tutor.timeslot];
 					
 					tutor_name = await getTutorName("http://localhost:5001/tutor/"+tutor.tutorID);
+					tutor_image = await getTutorImage("http://localhost:5001/tutor/"+tutor.tutorID);
 
 					//console.log(tutor_name);
 
 					each += '<tr class="table_row">'+	
 								'<td class="column-1">'+
 										'<div class="how-itemcart1">'+
-											'<img src="images/item-cart-04.jpg" alt="IMG">'+
+											'<img src="'+tutor_image+'" alt="IMG">'+
 										'</div>'+
 									'</td>'+
 									'<td class="column-2">'+ tutor_name + '</td>'+
@@ -539,7 +538,21 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		        console.error(error);
 		    }
 		}	
-
+		async function getTutorImage(serviceURL){
+			let requestParam = {
+	        mode: 'cors', // allow cross-origin resource sharing
+		        method: 'GET',
+		    }
+		    try {
+		        const response = await fetch(serviceURL, requestParam);
+		        data = await response.json();
+		       	tutor = data.tutor;
+				//console.log(tutor[0].name);
+				return tutor[0].image;
+		    } catch (error) {
+		        console.error(error);
+		    }
+		}
 
 	</script>
 
