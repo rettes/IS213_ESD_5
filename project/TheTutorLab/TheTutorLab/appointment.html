@@ -463,8 +463,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 					tutor1[tutor.tutorID]=[tutor.appointmentID,tutor.tutorID,tutor.customerID,tutor.subject,tutor.level,tutor.timeslot];
 					
-					tutor_name = await getTutorName("http://localhost:5001/tutor/"+tutor.tutorID);
-					tutor_image = await getTutorImage("http://localhost:5001/tutor/"+tutor.tutorID);
+					tutor_name = await getTutorName("http://tutorservice/tutor/"+tutor.tutorID);
+					tutor_image = await getTutorImage("http://tutorservice/tutor/"+tutor.tutorID);
 
 					//console.log(tutor_name);
 
@@ -519,7 +519,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			CID = sessionStorage.getItem("CID");
 
 
-		    var serviceURL = "http://localhost:5003/appointment/"+CID;
+		    var serviceURL = "http://appointmentservice/appointment/"+CID;
 		    getData(serviceURL);
 		});
 
