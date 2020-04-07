@@ -22,8 +22,9 @@ class Tutor(db.Model):
     experience = db.Column(db.Integer, nullable=False)
     about = db.Column(db.String(1000), nullable=False)
     rates = db.Column(db.Integer, nullable=False)
+    image = db.Column(db.String(128), nullable=False)
 
-    def init(tutorID, tutor_email, name, sex, age, subject, level, experience, about, rates):
+    def init(self, tutorID, tutor_email, name, sex, age, subject, level, experience, about, rates, image):
         self.tutorID = tutorID
         self.tutor_email = tutor_email
         self.name = name
@@ -34,10 +35,11 @@ class Tutor(db.Model):
         self.experience = experience
         self.about = about
         self.rates = rates
+        self.image = image
 
 
     def json(self):
-        return {"tutorID": self.tutorID, "tutor_email": self.tutor_email, "name": self.name, "sex": self.sex, "age": self.age, "subject": self.subject, "level": self.level, "experience": self.experience,"about": self.about, "rates": self.rates}
+        return {"tutorID": self.tutorID, "tutor_email": self.tutor_email, "name": self.name, "sex": self.sex, "age": self.age, "subject": self.subject, "level": self.level, "experience": self.experience,"about": self.about, "rates": self.rates, "image":self.image}
 
 @app.route("/tutor")
 def get_all():
