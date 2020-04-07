@@ -651,13 +651,33 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		    }
 		}
 
+		async function PaymentMade(){
+			
+			serviceURL = "http://localhost:8000/payments/"+CID;
+
+			let requestParam = {
+	        mode: 'cors', // allow cross-origin resource sharing
+		        method: 'GET',
+		    }
+		    try {
+		        const response = await fetch(serviceURL, requestParam);
+		        data = await response.json();
+		       	message = data.message;
+				console.log(message);
+				window.alert(message);
+		    } catch (error) {
+		        console.error(error);
+				window.alert(error);
+		    }
+		}
+
 
 	</script>
 
 	<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 	<script>
 
-		function generateButton(cost){
+		async function generateButton(cost){
 			//PayPal API
 			paypal.Button.render({
 				// Configure environment
@@ -693,17 +713,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				onAuthorize: function(data, actions) {
 				return actions.payment.execute().then(function() {
 					// Show a confirmation message to the buyer
-					
-					console.log("hibye");
-					window.alert('Payment Successful!');
-
-
-
+					PaymentMade();
 					window.location.replace("index.html");
 				});
 				}
 			}, '#paypal-button');
 		}
+		
 		$(async() => {           
 						// Change serviceURL to your own
 						var customerid = sessionStorage.getItem("CID");
