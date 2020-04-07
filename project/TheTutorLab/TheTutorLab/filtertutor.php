@@ -794,7 +794,7 @@ crossorigin="anonymous"></script>
 	$(async() => {           
 		// Change serviceURL to your own
 		
-		var serviceURL = "http://127.0.0.1:5001/tutor";
+		var serviceURL = "http://localhost:8000/tutor";
 		var my_var = <?php echo ($filter); ?>;
 								//console.log(my_var);
 
