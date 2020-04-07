@@ -4,7 +4,7 @@ use account_service;
 drop table if exists account;
 
 CREATE TABLE account (
-    customerID INT NOT NULL AUTO_INCREMENT,
+    customerID INT AUTO_INCREMENT,
     username VARCHAR(128) NOT NULL UNIQUE,
     name VARCHAR(128) NOT NULL,
     password VARCHAR(128) NOT NULL,
