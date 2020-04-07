@@ -727,9 +727,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							'</p>'+
 
 							'<p class="stext-102 cl3 p-t-23"> Subject: '+
-								tutor.subject + ', '+
-								tutor.level +
+								tutor.subject +
 							'</p>'+
+							'<p class="stext-102 cl3 p-t-23"> Level: '+
+								tutor.level +
+							'</p>' +
 						
 							'<div class="p-t-33">'+
 								'<div class="flex-w flex-r-m p-b-10">'+
@@ -781,9 +783,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									'<div class="wrap-pic-w pos-relative">'+
 										'<img src="'+tutor.image+'" alt="IMG-PRODUCT">'+
 
-										'<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">'+
-											'<i class="fa fa-expand"></i>'+
-										'</a>'+
+										
 									'</div>'+
 								'</div>'+
 
@@ -805,12 +805,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 			async function postData(serviceURL, requestBody) {
 			    var requestParam = {
-			        headers: { "content-type": "application/json; charset=UTF-8" },
+				 	method: 'POST',
+			        headers: { "Content-Type": "application/json; charset=UTF-8" },
 			        mode: 'cors', // other options: no-cors, etc.
-			        method: 'POST',
 			        body: JSON.stringify(requestBody)
-			    }
+			    };
 		    try {
+				console.log(serviceURL);
+				console.log(requestParam);
 		        const response = await fetch(serviceURL, requestParam);
 		        data = await response.json();
 		        console.log(data);
@@ -821,8 +823,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 			async function addtoCart() {
-				console.log(tutor);
-
 				 var serviceURL = "http://localhost:8000/cart" ;
 
 				// get datetime from input (how?)
@@ -832,7 +832,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 				apptDateTime = apptDate + ' ' + apptTime;
 				console.log(apptDateTime);
-				console.log(CID)
+				console.log(CID);
+				CID = parseInt(CID);
 				
 				var requestBody = {
 			        tutorID: tutor.tutorID, customerID: CID, subject: tutor.subject, level: tutor.level, timeslot : apptDateTime, price: tutor.rates
@@ -843,7 +844,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				//POST to cart service
 				postData(serviceURL, requestBody);
 				alert("Successful added to cart!");
-				window.location.replace("shoping-cart.html");   
+				window.location.replace("shoping-cart.html"); 
+				alert("pause")  
 			}
 			$(function(){
 
