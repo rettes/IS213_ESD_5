@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>All Tutors</title>
+	<title>All Tutor</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
@@ -67,7 +67,6 @@
 	
 </head>
 <body class="animsition">
-	
 	<!-- Header -->
 	<header class="header-v4">
 		<!-- Header desktop -->
@@ -78,8 +77,8 @@
 					
 					<div class="right-top-bar flex-w h-full">
 						
-						
-						<a href="login.html"  class="flex-c-m trans-04 p-lr-25">
+					
+						<a href="login.html"  class="flex-c-m trans-04 p-lr-25" >
                          Login with Customer ID
                       </a>
 
@@ -220,15 +219,15 @@
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						<a href="filtertutor.php?filter='Primary'">Primary</a>
+						<a href="">Primary</a>
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						<a href="filtertutor.php?filter='Secondary'">Secondary</a>
+						<a href="">Secondary</a>
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						<a href="filtertutor.php?filter='JuniorCollege'">Junior College</a>
+						<a href="">Junior College</a>
 					</button>
 
 	
@@ -762,6 +761,12 @@ crossorigin="anonymous"></script>
 
 
 <script>
+
+	console.log("<?php echo($_POST["Level"]);?>");
+	console.log("<?php echo($_POST["Subject"]);?>");
+	console.log(<?php echo($_POST["Experience"]);?>);
+	console.log(<?php echo($_POST["Rates"]);?>);
+	
 	// Helper function to display error message
 	function showError(message) {
 		// Hide the table and button in the event of error
@@ -776,19 +781,34 @@ crossorigin="anonymous"></script>
 	// anonymous async function - using await requires the function that calls it to be async
 	$(async() => {           
 		// Change serviceURL to your own
-		
-		var serviceURL = "http://127.0.0.1:8000/tutor";
+		var level = "<?php echo($_POST["Level"]);?>";
+		var experience = <?php echo($_POST["Experience"]);?>;
+		var rates = <?php echo($_POST["Rates"]);?>;
+		var subject = "<?php echo($_POST["Subject"]);?>";
+		var serviceURL = "http://127.0.0.1:5001/tutor";
 		
 
 		try {
-			const response =
-			await fetch(
-				serviceURL, { method: 'GET' }
-			);
+			var level = "<?php echo($_POST["Level"]);?>";
+			var experience = <?php echo($_POST["Experience"]);?>;
+			var rates = <?php echo($_POST["Rates"]);?>;
+			var  subject = "<?php echo($_POST["Subject"]);?>";
+			/////
+			const response = await fetch(serviceURL, {
+			method: 'POST', // *GET, POST, PUT, DELETE, etc.
+			headers: {
+			'Content-Type': 'application/json'
+			// 'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			body: JSON.stringify({level: "<?php echo($_POST["Level"]);?>", experience:<?php echo($_POST["Experience"]);?>, rates: <?php echo($_POST["Rates"]);?>, subject: "<?php echo($_POST["Subject"]);?>" })
+			}) // body data type must match "Content-Type" header
+
+
+			
 			const data = await response.json();
-			//console.log(data);
+			console.log(data)
 			var tutors = data.tutor; //the arr is in data.books of the JSON data
-			//console.log(tutors);
+			console.log(tutors)
 			// array or array.length are falsy
 			if (!tutors || !tutors.length) {
 				showError('Books list empty or undefined.')
@@ -825,12 +845,11 @@ crossorigin="anonymous"></script>
 													'Level: '+ tutor.level +
 												'</span>'+
 												'<span class="stext-105 cl3">'+
-													'Experience: '+ tutor.experience +' years'+
+													'Experience: '+ tutor.experience + ' year' + 
 												'</span>'+
 												'<span class="stext-105 cl3">'+
 													'Rate: $'+ tutor.rates +
 												'</span>'+
-												
 											'</div>'+
 				
 											'<div class="block2-txt-child2 flex-r p-t-3">'+
@@ -887,6 +906,13 @@ crossorigin="anonymous"></script>
        console.log(CID);
       }
  }
+
+ if (sessionStorage.getItem("CID")!="") {
+  	greeting = "Good day";
+} else {
+  greeting = "Good evening";
+}
+
 </script>
 </body>
 </html>
