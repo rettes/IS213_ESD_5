@@ -555,12 +555,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 					tutor1[tutor.tutorID]=[tutor.tutorID,tutor.customerID,tutor.subject,tutor.level,tutor.timeslot,tutor.price];
 					
-					tutor_name = await getTutorName("http://tutorservice/tutor/"+tutor.tutorID);
-					tutor_image = await getTutorImage("http://tutorservice/tutor/"+tutor.tutorID);
+					tutor_name = await getTutorName("http://localhost:5001/tutor/"+tutor.tutorID);
+					tutor_image = await getTutorImage("http://localhost:5001/tutor/"+tutor.tutorID);
 					
 
-					console.log(tutor_name);
-					console.log(sessionStorage.getItem("CID"));
+					//console.log(tutor_name);
+					//console.log(sessionStorage.getItem("CID"));
 
 					each += '<tr class="table_row">'+	
 								'<td class="column-1">'+
@@ -616,7 +616,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			CID = sessionStorage.getItem("CID");
 			//console.log(CID)
 
-		    var serviceURL = "http://cartservice/cart/"+CID;
+		    var serviceURL = "http://localhost:5006/cart/"+CID;
 		    getData(serviceURL);
 		});
 
@@ -693,11 +693,23 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				onAuthorize: function(data, actions) {
 				return actions.payment.execute().then(function() {
 					// Show a confirmation message to the buyer
-					$(async() => {           
+					
+					console.log("hibye");
+					window.alert('Payment Successful!');
+
+
+
+					window.location.replace("index.html");
+				});
+				}
+			}, '#paypal-button');
+		}
+		$(async() => {           
 						// Change serviceURL to your own
 						var customerid = sessionStorage.getItem("CID");
 						console.log(sessionStorage.getItem("CID"));
-						var serviceURL = "http://paymentservice/payments";
+						console.log("yes");
+						var serviceURL = "http://127.0.0.1:5005/payments";
 						
 
 						try {
@@ -737,6 +749,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							
 							// }
 						} catch (error) {
+							console.log("bye");
 							// Errors when calling the service; such as network error, 
 							// service offline, etc
 							showError
@@ -744,30 +757,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						
 						} // error
 					});
-					window.alert('Payment Successful!');
-
-
-
-					
-					
-
-
-
-
-
-
-
-
-
-
-
-
-
-					//window.location.replace("index.html");
-				});
-				}
-			}, '#paypal-button');
-		}
 		function SetID(){
       var CID = prompt("Please enter your CID", 1);
       var password = prompt("Please enter your password", "");

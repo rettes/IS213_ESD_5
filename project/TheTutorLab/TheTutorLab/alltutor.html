@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>All Tutor</title>
+	<title>All Tutors</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
@@ -78,7 +78,7 @@
 					
 					<div class="right-top-bar flex-w h-full">
 						
-
+						
 						<a href="login.html"  class="flex-c-m trans-04 p-lr-25">
                          Login with Customer ID
                       </a>
@@ -777,7 +777,7 @@ crossorigin="anonymous"></script>
 	$(async() => {           
 		// Change serviceURL to your own
 		
-		var serviceURL = "http://tutorservice/tutor";
+		var serviceURL = "http://127.0.0.1:5001/tutor";
 		
 
 		try {
@@ -822,8 +822,15 @@ crossorigin="anonymous"></script>
 													'Subject: '+ tutor.subject +
 												'</span>'+
 												'<span class="stext-105 cl3">'+
+													'Rate: '+ tutor.level +
+												'</span>'+
+												'<span class="stext-105 cl3">'+
+													'Experience: '+ tutor.experience +' years'+
+												'</span>'+
+												'<span class="stext-105 cl3">'+
 													'Rate: $'+ tutor.rates +
 												'</span>'+
+												
 											'</div>'+
 				
 											'<div class="block2-txt-child2 flex-r p-t-3">'+
