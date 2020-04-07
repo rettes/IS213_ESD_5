@@ -668,28 +668,29 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 		async function PaymentMade(){
 			
-			serviceURL = "http://localhost:8000/payments/";
+			serviceURL = "http://localhost:8000/payments";
 
 			var requestBody = {
 			        customerID: CID
 		    };
 
 			let requestParam = {
-				headers: { "content-type": "application/json; q charset=UTF-8"},
+				headers: { "content-type": "application/json; charset=UTF-8"},
 	        	mode: 'cors', // allow cross-origin resource sharing
 		        method: 'POST',
 				body: JSON.stringify(requestBody)
-		    }
+		    };
 		    try {
 		        const response = await fetch(serviceURL, requestParam);
 		        data = await response.json();
 		       	message = data.message;
 				console.log(message);
-				window.alert(message);
+				clearCart();
 		    } catch (error) {
-		        console.error(error);
-				window.alert(error);
+				clearCart();
+		        console.error(error);			
 		    }
+		clearCart();
 		}
 
 
@@ -735,7 +736,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				return actions.payment.execute().then(function() {
 					// Show a confirmation message to the buyer
 					PaymentMade();
-					clearCart();
 					window.location.replace("index.html");
 				});
 				}
