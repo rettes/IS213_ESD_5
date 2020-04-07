@@ -69,6 +69,19 @@ def get_all(customerID):
         return jsonify({"message": "Cart not found."}), 404
 
  
+@app.route("/cart/delete/<int:customerID>")
+def deleteCartByCustomerId(customerID):
+    try:
+        ID = int(customerID)
+        cart_details = Addtocart.query.filter_by(customerID=ID).delete()
+        if cart_details:
+            db.session.commit()
+    except Exception as e:
+        print (e)
+        return jsonify({"message": "Cart not found."}), 404
+
+        
+
 @app.route("/cart", methods=['POST'])
 def add_to_cart():
     data = request.get_json()
