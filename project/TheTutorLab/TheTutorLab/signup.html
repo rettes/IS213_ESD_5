@@ -63,8 +63,7 @@
                 <!-- Topbar -->
                 <div class="top-bar">
                     <div class="content-topbar flex-sb-m h-full container">
-                        
-                      
+
                     </div>
                 </div>
     
@@ -169,106 +168,151 @@
     
     
         <body>
-            <div id="login">
-                <h3 class="text-center text-white pt-5">Login form</h3>
-                <div class="container">
-                    <div id="login-row" class="row justify-content-center align-items-center">
-                        <div id="login-column" class="col-md-6">
-                            <div id="login-box" class="col-md-12">
-                                <form action="" id="login-form" class="form"method="post">
-                                    <h3 class="text-center text-info">Login</h3>
-                                    <div class="form-group">
-                                        <label for="username" class="text-info">Username:</label><br>
-                                        <input type="text" name="username" id="username" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password" class="text-info">Password:</label><br>
-                                        <input type="password" name="password" id="password" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <br>
-                                        <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
-                                    </div>
-                                    <div id="register-link" class="text-right">
-                                        <a href="signup.html" class="text-info">Register here</a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <!------ Include the above in your HEAD tag ---------->
             
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+            
+            
+            <div class="container">
+
+            
+            
+            
+            
+            
+            <div class="card bg-light">
+            <article class="card-body mx-auto" style="max-width: 400px;">
+                <h4 class="card-title mt-3 text-center">Create Account</h4>
+                <p class="text-center">Get started with your free account</p>
+                <form action="" method="POST" id="addCustomer">
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input name="customerID" id="customerID" class="form-control" placeholder="Customer ID" type="text">
+                </div> <!-- form-group// customerid -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                     </div>
+                    <input name="name" id="name" class="form-control" placeholder="Full name" type="text">
+                </div> <!-- form-group// name -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                     </div>
+                    <input name="username" id="username" class="form-control" placeholder="Username" type="text">
+                </div> <!-- form-group// username-->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input name="password" id="password" class="form-control" placeholder="Create password" type="password">
+                </div> <!-- form-group// password-->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input class="form-control" placeholder="Repeat password" type="password">
+                </div> <!-- form-group// password--> 
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                     </div>
+                    <input name="customer_email" id="customer_email" class="form-control" placeholder="Email address" type="email">
+                </div> <!-- form-group// email -->
+
+                                     
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+                </div> <!-- form-group// -->      
+                <p class="text-center">Have an account? <a href="login.html">Log In</a> </p>                                                                 
+            </form>
+            </article>
+            </div> <!-- card.// -->
+            
+            </div> 
+            <!--container end.//-->
+
             
 
             <script>
-                function showError(message) {     
-                    // Display an error under the main container
-                    $('#main-container')
-                        .append("<label>"+message+"</label>");
-                }
-                $("#login-form").submit(async (event) => {  //Prevents screen from refreshing when submitting  
+                // Helper function to display error message
+
+            
+                // anonymous async function 
+                // - using await requires the function that calls it to be async
+                //////
+                $("#addCustomer").submit(async (event) => {  //Prevents screen from refreshing when submitting  
                     event.preventDefault();
-                    
                     var username = $('#username').val();
+                    var password = $('#password').val();
+                    var name = $('#name').val();
+                    var customer_email = $('#customer_email').val();
+                    var customerID = $('#customerID').val();
+                   
                     var serviceURL = "http://127.0.0.1:5004/account";
 
-                try {
-                        
+                    try {
+                        var customer_email = $('#customer_email').val();
+                        var username = $('#username').val().toString();;
+                        var password = $('#password').val();
+                        var name = $('#name').val();
+                        var customerID = $('#customerID').val();
+                        console.log(username);
                         const response =
                         await fetch(
-                        serviceURL, { method: 'GET' }
-                        );
-                       // const data = await response.json();
-                        
-                       // var accounts = data; //the arr is in data.books of the JSON data
-                        //console.log(accounts);
-                        const data = await response.json();
-                        
-                        var accounts = data; //the arr is in data.books of the JSON data
-                        var number = 0;
-                        //console.log(accounts)
-                        for(var index in accounts) {
-                            //console.log(accounts[index][0]["username"])
-                            //console.log(username)
-                            for (i = 0; i < accounts[index].length; i++) {
-                                if (accounts[index][i]["username"]==username){
-                                   // console.log(i)
-                                    number = i;
-                                }
-                                 
+                            serviceURL,
+                            {
+                                method: 'POST',
+                                headers:{"Content-Type":"application/json"},
+                                body: JSON.stringify
+                                ({customerID: customerID, username: $('#username').val().toString(), name: $('#name').val().toString(), password: $('#password').val().toString(), customer_email: $('#customer_email').val().toString() })
                             }
-                        }
-                        //console.log(number)
-                        
-                        //console.log(tutors);
-                        // array or array.length are falsy
-                        if (accounts["Accounts"][number]['customerID'].length==0) {
-                            showError('Incorrect Username or password! Please try again!')
-                        } else {
-                            sessionStorage.setItem("CID", accounts["Accounts"][number]['customerID']);
-                            sessionStorage.setItem("name", accounts["Accounts"][number]['name']);
-                            //console.log(sessionStorage.getItem("CID"));
-                            alert("Welcome "+accounts["Accounts"][number]['name']+"!");
-                            window.location.replace("index.html");   
-                        }
-                        
-                        
+                        );
 
-                    }catch (error) {
-                    // Errors when calling the service; such as network error, 
-                    // service offline, etc
-                    // showError
-                    // ('There is a problem retrieving books data, please try again later.<br />'+error);
-    
-    } // error
-            });
-               
-                
-               
-    
+                        const data = await response.json();
+                        alert("You have successfully created your account! Please Login!");
+                        window.location.replace("login.html"); 
+                        //console.log(data);
+
+                        //******************** check if reposnse is present**************
+                        // if(response.ok){
+                        //     window.location.replace(homeURL);
+                        //      return False;
+                        // }
+                        // else{
+                        //     showError(data.message)
+                        // }
+                        
+                        var books = data.books; //the arr is in data.books of the JSON data
+                        
+                        console.log(books);
+                        showError('Book successfully added.')
+                        
+                    } catch (error) {
+                        // Errors when calling the service; such as network error, 
+                        // service offline, etc
+                        // showError
+                        // ('There is a problem retrieving books data, please try again later.<br />'+error);
+           
+        } // error
+
+                });
+
+                ///////
+                $(async() => {           
+                    // Change serviceURL to your own
+                    
+                    
+                    var serviceURL = "http://127.0.0.1:5000/book/"+isbnNumber, methods=['POST'];
+            
+                    
+    });
 </script>
-
 
             
         </body>

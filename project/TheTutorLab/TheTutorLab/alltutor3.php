@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>All Tutor</title>
+	<title>Tutor</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
@@ -67,6 +68,7 @@
 	
 </head>
 <body class="animsition">
+	
 	<!-- Header -->
 	<header class="header-v4">
 		<!-- Header desktop -->
@@ -77,10 +79,10 @@
 					
 					<div class="right-top-bar flex-w h-full">
 						
-					
-						<a href="login.html"  class="flex-c-m trans-04 p-lr-25" >
-                         Login with Customer ID
-                      </a>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							My Account
+						</a>
 
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							EN
@@ -97,7 +99,7 @@
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
-					<a href="index.html" class="logo">
+					<a href="#" class="logo">
 						<img src="images/TutorLab_Logo.png" alt="IMG-LOGO">
 					</a>
 
@@ -114,7 +116,7 @@
 							</li>
 
 							<li>
-								<a href="appointment.html">Appointment</a>
+								<a href="blog.html">Appointment</a>
 							</li>
 
 						</ul>
@@ -124,8 +126,8 @@
 					<div class="wrap-icon-header flex-w flex-r-m">
 
 
-						<div  class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11  js-show-cart">
-							<a href="shoping-cart.html"><i class="zmdi zmdi-shopping-cart"></i></a>
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
 					</div>
@@ -137,16 +139,22 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="index.html"><img src="images/TutorLab_Logo.png" alt="IMG-LOGO"></a>
+				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
 			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+					<i class="zmdi zmdi-search"></i>
+				</div>
 
-					<div  class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11  js-show-cart">
-							<a href="shoping-cart.html"><i class="zmdi zmdi-shopping-cart"></i></a>
-						</div>
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+					<i class="zmdi zmdi-shopping-cart"></i>
+				</div>
 
+				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
+					<i class="zmdi zmdi-favorite-outline"></i>
+				</a>
 			</div>
 
 			<!-- Button show menu -->
@@ -161,19 +169,28 @@
 		<!-- Menu Mobile -->
 		<div class="menu-mobile">
 			<ul class="topbar-mobile">
+				<li>
+					<div class="left-top-bar">
+						Free shipping for standard order over $100
+					</div>
+				</li>
 
 				<li>
 					<div class="right-top-bar flex-w h-full">
-							<a href="#" id="setCID" class="flex-c-m trans-04 p-lr-25" onclick="SetID()">
-                         Login with Customer ID
-                      </a>
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							Help & FAQs
+						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							My Account
+						</a>
+
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
 							EN
 						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							SGD
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							USD
 						</a>
 					</div>
 				</li>
@@ -181,18 +198,36 @@
 
 			<ul class="main-menu-m">
 				<li>
-                    <a href="index.html">Home</a>
-                </li>
+					<a href="index.html">Home</a>
+					<ul class="sub-menu-m">
+						<li><a href="index.html">Homepage 1</a></li>
+						<li><a href="home-02.html">Homepage 2</a></li>
+						<li><a href="home-03.html">Homepage 3</a></li>
+					</ul>
+					<span class="arrow-main-menu-m">
+						<i class="fa fa-angle-right" aria-hidden="true"></i>
+					</span>
+				</li>
 
+				<li>
+					<a href="product.html">Shop</a>
+				</li>
 
-                <li class="label1" data-label1="hot">
-                    <a href="shoping-cart.html">Tutor</a>
-                </li>
+				<li>
+					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+				</li>
 
-                <li>
-                    <a href="appointment.html">Appointment</a>
-                </li>
-                
+				<li>
+					<a href="blog.html">Blog</a>
+				</li>
+
+				<li>
+					<a href="about.html">About</a>
+				</li>
+
+				<li>
+					<a href="contact.html">Contact</a>
+				</li>
 			</ul>
 		</div>
 
@@ -203,10 +238,100 @@
 					<img src="images/icons/icon-close2.png" alt="CLOSE">
 				</button>
 
+				<form class="wrap-search-header flex-w p-l-15">
+					<button class="flex-c-m trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="plh3" type="text" name="search" placeholder="Search...">
+				</form>
 			</div>
 		</div>
 	</header>
 
+	<!-- Cart -->
+	<div class="wrap-header-cart js-panel-cart">
+		<div class="s-full js-hide-cart"></div>
+
+		<div class="header-cart flex-col-l p-l-65 p-r-25">
+			<div class="header-cart-title flex-w flex-sb-m p-b-8">
+				<span class="mtext-103 cl2">
+					Your Cart
+				</span>
+
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
+			
+			<div class="header-cart-content flex-w js-pscroll">
+				<ul class="header-cart-wrapitem w-full">
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="images/item-cart-01.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								White Shirt Pleat
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $19.00
+							</span>
+						</div>
+					</li>
+
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="images/item-cart-02.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								Converse All Star
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $39.00
+							</span>
+						</div>
+					</li>
+
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="images/item-cart-03.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								Nixon Porter Leather
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $17.00
+							</span>
+						</div>
+					</li>
+				</ul>
+				
+				<div class="w-full">
+					<div class="header-cart-total w-full p-tb-40">
+						Total: $75.00
+					</div>
+
+					<div class="header-cart-buttons flex-w w-full">
+						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							View Cart
+						</a>
+
+						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+							Check Out
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	
 	<!-- Product -->
@@ -256,13 +381,13 @@
 				<div class="dis-none panel-filter w-full p-t-10">
 					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
 						<div class="filter-col1 p-r-15 p-b-27">
-							<form action="alltutor.php" method="post">
+							<form action="alltutor2.html">
 								<div class="mtext-102 cl2 p-b-15">
 									Level
 								</div>
 
 								<ul>
-									<select id="Level" name="Level" class="selectpicker">
+									<select id="Level" name="caLevelrs" class="selectpicker">
 										<option value="Primary">Primary</option>
 										<option value="Secondary">Secondary</option>
 										<option value="JuniorCollege">Junior College</option>
@@ -311,7 +436,7 @@
 
 								<ul>
 									<select id="Rates" name="Rates" class="selectpicker">
-										<option value="9999">No Preference</option>
+										<option value="volvo">No Preference</option>
 										<option value="30">less than $30</option>
 										<option value="40">less than $40</option>
 										<option value="50">less than $50</option>
@@ -335,44 +460,51 @@
 					</div>
 				</div>
 			</div>
-			<div id="booksTable1"></div>
 
+			<div>
+			
+</div>
+			<div id="booksTable1"></div>
+			<div>
+			<?php echo $_POST["Experience"]; ?>
+			</div>
 			</div>
 
 		</div>
 	</div>
 		
+
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						Tutor Lab
+						Categories
 					</h4>
 
 					<ul>
 						<li class="p-b-10">
-							<a href="index.hmtl" class="stext-107 cl7 hov-cl1 trans-04">
-								Home
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Women
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="alltutor.html" class="stext-107 cl7 hov-cl1 trans-04">
-								Tutor
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Men
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="appointment.html" class="stext-107 cl7 hov-cl1 trans-04">
-								Appointment
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Shoes
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="shoping-cart.html" class="stext-107 cl7 hov-cl1 trans-04">
-								View Cart
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Watches
 							</a>
 						</li>
 					</ul>
@@ -384,7 +516,23 @@
 					</h4>
 
 					<ul>
-					
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Track Order
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Returns 
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Shipping
+							</a>
+						</li>
 
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
@@ -400,7 +548,7 @@
 					</h4>
 
 					<p class="stext-107 cl7 size-201">
-						Any questions? Let us know at tutorlab@edu.sg
+						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
 					</p>
 
 					<div class="p-t-27">
@@ -463,7 +611,7 @@
 
 				<p class="stext-107 cl6 txt-center">
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
 				</p>
@@ -756,16 +904,19 @@ integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv
 crossorigin="anonymous"></script>
 
 
-
+<?php
+	if (isset($_POST["Level"])){
+		$level=$_POST["Level"];
+		$subject=$_POST["Subject"];
+		$experience=$_POST["Experience"];
+		$rates=$_POST["Rates"];
+	}
+	
+?>
 
 
 
 <script>
-
-	console.log("<?php echo($_POST["Level"]);?>");
-	console.log("<?php echo($_POST["Subject"]);?>");
-	console.log(<?php echo($_POST["Experience"]);?>);
-	console.log(<?php echo($_POST["Rates"]);?>);
 	
 	// Helper function to display error message
 	function showError(message) {
@@ -781,34 +932,35 @@ crossorigin="anonymous"></script>
 	// anonymous async function - using await requires the function that calls it to be async
 	$(async() => {           
 		// Change serviceURL to your own
-		var level = "<?php echo($_POST["Level"]);?>";
-		var experience = <?php echo($_POST["Experience"]);?>;
-		var rates = <?php echo($_POST["Rates"]);?>;
-		var subject = "<?php echo($_POST["Subject"]);?>";
+		
 		var serviceURL = "http://127.0.0.1:5001/tutor";
 		
+		
+	
 
 		try {
-			var level = "<?php echo($_POST["Level"]);?>";
-			var experience = <?php echo($_POST["Experience"]);?>;
-			var rates = <?php echo($_POST["Rates"]);?>;
-			var  subject = "<?php echo($_POST["Subject"]);?>";
-			/////
-			const response = await fetch(serviceURL, {
-			method: 'POST', // *GET, POST, PUT, DELETE, etc.
-			headers: {
-			'Content-Type': 'application/json'
-			// 'Content-Type': 'application/x-www-form-urlencoded',
-			},
-			body: JSON.stringify({level: "<?php echo($_POST["Level"]);?>", experience:<?php echo($_POST["Experience"]);?>, rates: <?php echo($_POST["Rates"]);?>, subject: "<?php echo($_POST["Subject"]);?>" })
-			}) // body data type must match "Content-Type" header
+			var level = <?php echo ($_POST["Level"]) ?>;
+            var experience = <?php echo ($_POST["Experience"]) ?>;
+            var rates = <?php echo ($_POST["Rates"]) ?>;
+            var subject = <?php echo ($_POST["Subject"]) ?>;
+			var serviceURL = "http://127.0.0.1:5001/tutor";
+		
+			const response =
+					await fetch(
+						serviceURL, { 
+							method: 'POST', 
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify({ level: level, experience: experience, rates: rates, subject: subject})
+						});
+
+				const data = await response.json();
+				console.log(data);
+				console.log(serviceURL);
 
 
-			
-			const data = await response.json();
-			console.log(data)
+			console.log(data);
 			var tutors = data.tutor; //the arr is in data.books of the JSON data
-			console.log(tutors)
+			console.log(tutors);
 			// array or array.length are falsy
 			if (!tutors || !tutors.length) {
 				showError('Books list empty or undefined.')
@@ -825,9 +977,9 @@ crossorigin="anonymous"></script>
 					each += '<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">'+
 									'<div class="block2">'+
 										'<div class="block2-pic hov-img0">'+
-											'<img src="'+tutor.image+'" alt="IMG-PRODUCT" style="height: 400px; width: 270px; ">'+
+											'<img src="images/product-01.jpg" alt="IMG-PRODUCT">'+
 				
-											'<a href="tutor-detail.html?tid='+ tutor.tutorID + '" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">'+
+											'<a href="quickview.html?tutorid='+ tutor.tutorID + '" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">'+
 												'Quick View'+
 											'</a>'+
 										'</div>'+
@@ -840,12 +992,6 @@ crossorigin="anonymous"></script>
 				
 												'<span class="stext-105 cl3">'+
 													'Subject: '+ tutor.subject +
-												'</span>'+
-												'<span class="stext-105 cl3">'+
-													'Level: '+ tutor.level +
-												'</span>'+
-												'<span class="stext-105 cl3">'+
-													'Experience: '+ tutor.experience + ' year' + 
 												'</span>'+
 												'<span class="stext-105 cl3">'+
 													'Rate: $'+ tutor.rates +
@@ -894,25 +1040,6 @@ crossorigin="anonymous"></script>
 		   
 		} // error
 	});
-    
-    function SetID(){
-      var CID = prompt("Please enter your CID", 1);
-      var password = prompt("Please enter your password", "");
-      if (CID != null) {
-       document.getElementById("setCID").innerHTML =
-       "Customer ID: " + CID;
-       //Set CID here
-       sessionStorage.setItem("CID", CID);
-       console.log(CID);
-      }
- }
-
- if (sessionStorage.getItem("CID")!="") {
-  	greeting = "Good day";
-} else {
-  greeting = "Good evening";
-}
-
 </script>
 </body>
 </html>

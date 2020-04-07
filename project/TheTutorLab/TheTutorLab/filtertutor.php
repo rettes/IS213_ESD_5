@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>All Tutor</title>
+	<title>All Tutur</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
@@ -67,6 +67,7 @@
 	
 </head>
 <body class="animsition">
+
 	<!-- Header -->
 	<header class="header-v4">
 		<!-- Header desktop -->
@@ -74,20 +75,25 @@
 			<!-- Topbar -->
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
-					
+					<div class="left-top-bar">
+						Free shipping for standard order over $100
+					</div>
+
 					<div class="right-top-bar flex-w h-full">
-						
-					
-						<a href="login.html"  class="flex-c-m trans-04 p-lr-25" >
-                         Login with Customer ID
-                      </a>
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							Help & FAQs
+						</a>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							My Account
+						</a>
 
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							EN
 						</a>
 
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							SGD
+							USD
 						</a>
 					</div>
 				</div>
@@ -97,8 +103,8 @@
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
-					<a href="index.html" class="logo">
-						<img src="images/TutorLab_Logo.png" alt="IMG-LOGO">
+					<a href="#" class="logo">
+						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
 					</a>
 
 					<!-- Menu desktop -->
@@ -106,28 +112,48 @@
 						<ul class="main-menu">
 							<li>
 								<a href="index.html">Home</a>
+								<ul class="sub-menu">
+									<li><a href="index.html">Homepage 1</a></li>
+									<li><a href="home-02.html">Homepage 2</a></li>
+									<li><a href="home-03.html">Homepage 3</a></li>
+								</ul>
 							</li>
 
+							<li class="active-menu">
+								<a href="product.html">Shop</a>
+							</li>
 
 							<li class="label1" data-label1="hot">
-								<a href="shoping-cart.html">Tutor</a>
+								<a href="shoping-cart.html">Features</a>
 							</li>
 
 							<li>
-								<a href="appointment.html">Appointment</a>
+								<a href="blog.html">Blog</a>
 							</li>
 
+							<li>
+								<a href="about.html">About</a>
+							</li>
+
+							<li>
+								<a href="contact.html">Contact</a>
+							</li>
 						</ul>
 					</div>	
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
-
-
-						<div  class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11  js-show-cart">
-							<a href="shoping-cart.html"><i class="zmdi zmdi-shopping-cart"></i></a>
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+							<i class="zmdi zmdi-search"></i>
 						</div>
 
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+							<i class="zmdi zmdi-shopping-cart"></i>
+						</div>
+
+						<a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+							<i class="zmdi zmdi-favorite-outline"></i>
+						</a>
 					</div>
 				</nav>
 			</div>	
@@ -137,16 +163,22 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="index.html"><img src="images/TutorLab_Logo.png" alt="IMG-LOGO"></a>
+				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
 			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+					<i class="zmdi zmdi-search"></i>
+				</div>
 
-					<div  class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11  js-show-cart">
-							<a href="shoping-cart.html"><i class="zmdi zmdi-shopping-cart"></i></a>
-						</div>
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+					<i class="zmdi zmdi-shopping-cart"></i>
+				</div>
 
+				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
+					<i class="zmdi zmdi-favorite-outline"></i>
+				</a>
 			</div>
 
 			<!-- Button show menu -->
@@ -161,19 +193,28 @@
 		<!-- Menu Mobile -->
 		<div class="menu-mobile">
 			<ul class="topbar-mobile">
+				<li>
+					<div class="left-top-bar">
+						Free shipping for standard order over $100
+					</div>
+				</li>
 
 				<li>
 					<div class="right-top-bar flex-w h-full">
-							<a href="#" id="setCID" class="flex-c-m trans-04 p-lr-25" onclick="SetID()">
-                         Login with Customer ID
-                      </a>
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							Help & FAQs
+						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							My Account
+						</a>
+
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
 							EN
 						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							SGD
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							USD
 						</a>
 					</div>
 				</li>
@@ -181,18 +222,36 @@
 
 			<ul class="main-menu-m">
 				<li>
-                    <a href="index.html">Home</a>
-                </li>
+					<a href="index.html">Home</a>
+					<ul class="sub-menu-m">
+						<li><a href="index.html">Homepage 1</a></li>
+						<li><a href="home-02.html">Homepage 2</a></li>
+						<li><a href="home-03.html">Homepage 3</a></li>
+					</ul>
+					<span class="arrow-main-menu-m">
+						<i class="fa fa-angle-right" aria-hidden="true"></i>
+					</span>
+				</li>
 
+				<li>
+					<a href="product.html">Shop</a>
+				</li>
 
-                <li class="label1" data-label1="hot">
-                    <a href="shoping-cart.html">Tutor</a>
-                </li>
+				<li>
+					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+				</li>
 
-                <li>
-                    <a href="appointment.html">Appointment</a>
-                </li>
-                
+				<li>
+					<a href="blog.html">Blog</a>
+				</li>
+
+				<li>
+					<a href="about.html">About</a>
+				</li>
+
+				<li>
+					<a href="contact.html">Contact</a>
+				</li>
 			</ul>
 		</div>
 
@@ -203,31 +262,121 @@
 					<img src="images/icons/icon-close2.png" alt="CLOSE">
 				</button>
 
+				<form class="wrap-search-header flex-w p-l-15">
+					<button class="flex-c-m trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="plh3" type="text" name="search" placeholder="Search...">
+				</form>
 			</div>
 		</div>
 	</header>
 
+	<!-- Cart -->
+	<div class="wrap-header-cart js-panel-cart">
+		<div class="s-full js-hide-cart"></div>
+
+		<div class="header-cart flex-col-l p-l-65 p-r-25">
+			<div class="header-cart-title flex-w flex-sb-m p-b-8">
+				<span class="mtext-103 cl2">
+					Your Cart
+				</span>
+
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
+			
+			<div class="header-cart-content flex-w js-pscroll">
+				<ul class="header-cart-wrapitem w-full">
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="images/item-cart-01.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								White Shirt Pleat
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $19.00
+							</span>
+						</div>
+					</li>
+
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="images/item-cart-02.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								Converse All Star
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $39.00
+							</span>
+						</div>
+					</li>
+
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="images/item-cart-03.jpg" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								Nixon Porter Leather
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x $17.00
+							</span>
+						</div>
+					</li>
+				</ul>
+				
+				<div class="w-full">
+					<div class="header-cart-total w-full p-tb-40">
+						Total: $75.00
+					</div>
+
+					<div class="header-cart-buttons flex-w w-full">
+						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							View Cart
+						</a>
+
+						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+							Check Out
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	
 	<!-- Product -->
 	<div class="bg0 m-t-23 p-b-140">
 		<div class="container">
 			<div class="flex-w flex-sb-m p-b-52">
-				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+			<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="*">
 						<a href="alltutor.html">All Tutors</a>
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						<a href="">Primary</a>
+						<a href="filtertutor.php?filter='Primary'">Primary</a>
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						<a href="">Secondary</a>
+						<a href="filtertutor.php?filter='Secondary'">Secondary</a>
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						<a href="">Junior College</a>
+						<a href="filtertutor.php?filter='JuniorCollege'">Junior College</a>
 					</button>
 
 	
@@ -238,6 +387,12 @@
 						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
 						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
 						 Filter
+					</div>
+
+					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
+						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
+						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+						Search
 					</div>
 				</div>
 				
@@ -256,81 +411,96 @@
 				<div class="dis-none panel-filter w-full p-t-10">
 					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
 						<div class="filter-col1 p-r-15 p-b-27">
-							<form action="alltutor.php" method="post">
-								<div class="mtext-102 cl2 p-b-15">
-									Level
-								</div>
-
-								<ul>
-									<select id="Level" name="Level" class="selectpicker">
-										<option value="Primary">Primary</option>
-										<option value="Secondary">Secondary</option>
-										<option value="JuniorCollege">Junior College</option>
-										<option value="OtherLevel">Others</option>
-									</select>
-								</ul>
+							<div class="mtext-102 cl2 p-b-15">
+								Level
 							</div>
 
-							<div class="filter-col1 p-r-15 p-b-27">
-								<div class="mtext-102 cl2 p-b-15">
-									Subject
-								</div>
+							<ul>
+								<li class="p-b-6">
+									<a href="filtertutor.php?filter='Primary'" class="filter-link stext-106 trans-04">
+										Primary
+									</a>
+								</li>
 
-								<ul>
-									<select id="Subject" name="Subject" class="selectpicker">
-										<option value="English">English</option>
-										<option value="Math">Math</option>
-										<option value="Science">Science</option>
-										<option value="Chinese">Chinese</option>
-										<option value="OtherSubject">Others</option>
-									</select>
-								</ul>
+								<li class="p-b-6">
+									<a href="filtertutor.php?filter='Secondary'" class="filter-link stext-106 trans-04">
+										Secondary
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="filtertutor.php?filter='JuniorCollege'" class="filter-link stext-106 trans-04">
+										Junior College
+									</a>
+								</li>
+
+							</ul>
+						</div>
+
+						<div class="filter-col1 p-r-15 p-b-27">
+							<div class="mtext-102 cl2 p-b-15">
+								Subject
 							</div>
 
-							<div class="filter-col1 p-r-15 p-b-27">
-								<div class="mtext-102 cl2 p-b-15">
-									Experience
-								</div>
+							<ul>
+								<li class="p-b-6">
+									<a href="filtertutor.php?filter='English'" class="filter-link stext-106 trans-04">
+										English
+									</a>
+								</li>
 
-								<ul>
-									<select id="Experience" name="Experience" class="selectpicker">
-										<option value="0">No Preference</option>
-										<option value="1">1 year</option>
-										<option value="2">2 years</option>
-										<option value="3">3 years</option>
-										<option value="4">4 years</option>
-										<option value="5">5++ years</option>
-									</select>
-								</ul>
+								<li class="p-b-6">
+									<a href="filtertutor.php?filter='Math'" class="filter-link stext-106 trans-04">
+										Math
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="filtertutor.php?filter='Science'" class="filter-link stext-106 trans-04">
+										Science
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="filtertutor.php?filter='Chinese'" class="filter-link stext-106 trans-04 filter-link-active">
+										Chinese
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="filtertutor.php?filter='others'" class="filter-link stext-106 trans-04">
+										Others
+									</a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="filter-col2 p-r-15 p-b-27">
+							<div class="mtext-102 cl2 p-b-15">
+								Price
 							</div>
 
-							<div class="filter-col1 p-r-15 p-b-27">
-								<div class="mtext-102 cl2 p-b-15">
-									Rates
-								</div>
+							<ul>
 
-								<ul>
-									<select id="Rates" name="Rates" class="selectpicker">
-										<option value="9999">No Preference</option>
-										<option value="30">less than $30</option>
-										<option value="40">less than $40</option>
-										<option value="50">less than $50</option>
-										<option value="60">less than $60</option>
-									</select>
-									  
-								</ul>
-							</div>
+								<li class="p-b-6">
+									<a href="filtertutor.php?filter='cost100'" class="filter-link stext-106 trans-04">
+										$50.00 - $100.00
+									</a>
+								</li>
 
-							<div class="filter-col1 p-r-15 p-b-27">
-								<div class="mtext-102 cl2 p-b-15">
-									
-								</div>	
-								<input class="btn btn-primary" type="submit" value="Submit">
-							</div>
+								<li class="p-b-6">
+									<a href="filtertutor.php?filter='cost150'" class="filter-link stext-106 trans-04">
+										$100.00 - $150.00
+									</a>
+								</li>
 
-						</form>
-
-					
+								<li class="p-b-6">
+									<a href="filtertutor.php?filter='cost151'" class="filter-link stext-106 trans-04">
+										$150.00+
+									</a>
+								</li>
+							</ul>
+						</div>
 
 					</div>
 				</div>
@@ -339,40 +509,43 @@
 
 			</div>
 
+
+
 		</div>
 	</div>
 		
+
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						Tutor Lab
+						Categories
 					</h4>
 
 					<ul>
 						<li class="p-b-10">
-							<a href="index.hmtl" class="stext-107 cl7 hov-cl1 trans-04">
-								Home
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Women
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="alltutor.html" class="stext-107 cl7 hov-cl1 trans-04">
-								Tutor
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Men
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="appointment.html" class="stext-107 cl7 hov-cl1 trans-04">
-								Appointment
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Shoes
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="shoping-cart.html" class="stext-107 cl7 hov-cl1 trans-04">
-								View Cart
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Watches
 							</a>
 						</li>
 					</ul>
@@ -384,7 +557,23 @@
 					</h4>
 
 					<ul>
-					
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Track Order
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Returns 
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Shipping
+							</a>
+						</li>
 
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
@@ -400,9 +589,10 @@
 					</h4>
 
 					<p class="stext-107 cl7 size-201">
-						Any questions? Let us know at tutorlab@edu.sg
+						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
 					</p>
 
+					
 					<div class="p-t-27">
 						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
 							<i class="fa fa-facebook"></i>
@@ -463,7 +653,7 @@
 
 				<p class="stext-107 cl6 txt-center">
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
 				</p>
@@ -632,6 +822,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			</div>
 		</div>
 	</div>
+<?php
+	if (isset($_GET['filter'])) {
+		$filter = $_GET['filter'];
+	}
+?>
 
 <!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -756,17 +951,7 @@ integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv
 crossorigin="anonymous"></script>
 
 
-
-
-
-
 <script>
-
-	console.log("<?php echo($_POST["Level"]);?>");
-	console.log("<?php echo($_POST["Subject"]);?>");
-	console.log(<?php echo($_POST["Experience"]);?>);
-	console.log(<?php echo($_POST["Rates"]);?>);
-	
 	// Helper function to display error message
 	function showError(message) {
 		// Hide the table and button in the event of error
@@ -781,34 +966,20 @@ crossorigin="anonymous"></script>
 	// anonymous async function - using await requires the function that calls it to be async
 	$(async() => {           
 		// Change serviceURL to your own
-		var level = "<?php echo($_POST["Level"]);?>";
-		var experience = <?php echo($_POST["Experience"]);?>;
-		var rates = <?php echo($_POST["Rates"]);?>;
-		var subject = "<?php echo($_POST["Subject"]);?>";
-		var serviceURL = "http://127.0.0.1:5001/tutor";
 		
+		var serviceURL = "http://127.0.0.1:5001/tutor";
+		var my_var = <?php echo ($filter); ?>;
+								//console.log(my_var);
 
 		try {
-			var level = "<?php echo($_POST["Level"]);?>";
-			var experience = <?php echo($_POST["Experience"]);?>;
-			var rates = <?php echo($_POST["Rates"]);?>;
-			var  subject = "<?php echo($_POST["Subject"]);?>";
-			/////
-			const response = await fetch(serviceURL, {
-			method: 'POST', // *GET, POST, PUT, DELETE, etc.
-			headers: {
-			'Content-Type': 'application/json'
-			// 'Content-Type': 'application/x-www-form-urlencoded',
-			},
-			body: JSON.stringify({level: "<?php echo($_POST["Level"]);?>", experience:<?php echo($_POST["Experience"]);?>, rates: <?php echo($_POST["Rates"]);?>, subject: "<?php echo($_POST["Subject"]);?>" })
-			}) // body data type must match "Content-Type" header
-
-
-			
+			const response =
+			await fetch(
+				serviceURL, { method: 'GET' }
+			);
 			const data = await response.json();
-			console.log(data)
+			//console.log(data);
 			var tutors = data.tutor; //the arr is in data.books of the JSON data
-			console.log(tutors)
+			//console.log(tutors);
 			// array or array.length are falsy
 			if (!tutors || !tutors.length) {
 				showError('Books list empty or undefined.')
@@ -822,46 +993,8 @@ crossorigin="anonymous"></script>
 				for (const tutor of tutors) {
 					tutor1[tutor.tutorID]=[tutor.tutor_email,tutor.name,tutor.sex,tutor.age,tutor.subject,tutor.level,tutor.experience,tutor.about,tutor.rates];
 					
-					each += '<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">'+
-									'<div class="block2">'+
-										'<div class="block2-pic hov-img0">'+
-											'<img src="'+tutor.image+'" alt="IMG-PRODUCT" style="height: 400px; width: 270px; ">'+
-				
-											'<a href="tutor-detail.html?tid='+ tutor.tutorID + '" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">'+
-												'Quick View'+
-											'</a>'+
-										'</div>'+
-				
-										'<div class="block2-txt flex-w flex-t p-t-14">'+
-											'<div class="block2-txt-child1 flex-col-l ">'+
-												'Name: '+tutor.name+'<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">'+
-													
-												'</a>'+
-				
-												'<span class="stext-105 cl3">'+
-													'Subject: '+ tutor.subject +
-												'</span>'+
-												'<span class="stext-105 cl3">'+
-													'Level: '+ tutor.level +
-												'</span>'+
-												'<span class="stext-105 cl3">'+
-													'Experience: '+ tutor.experience + ' year' + 
-												'</span>'+
-												'<span class="stext-105 cl3">'+
-													'Rate: $'+ tutor.rates +
-												'</span>'+
-											'</div>'+
-				
-											'<div class="block2-txt-child2 flex-r p-t-3">'+
-												'<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">'+
-													'<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">'+
-													'<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">'+
-												'</a>'+
-											'</div>'+
-										'</div>'+
-									'</div>'+
-								'</div>';
-							
+					
+								
 					eachRow = 
 					
 						"<td>" + tutor.tutorID + "</td>" +
@@ -878,8 +1011,51 @@ crossorigin="anonymous"></script>
 					//$('#booksTable1').append(each);
 					
 				}
+				var value;
+				newarray={};
+				for (var key in tutor1) {
+					value = tutor1[key];
+					//console.log(<?php echo ($filter); ?>)
+					if (value[5]==<?php echo ($filter); ?>){
+						newarray[key]=tutor1[key];
+					}
+					
+				}
+				console.log(newarray)
 
-
+				for (var key in newarray) {
+					value = tutor1[key];
+					each += '<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">'+
+									'<div class="block2">'+
+										'<div class="block2-pic hov-img0">'+
+											'<img src="images/product-01.jpg" alt="IMG-PRODUCT">'+
+				
+											'<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">'+
+												'Quick View'+
+											'</a>'+
+										'</div>'+
+				
+										'<div class="block2-txt flex-w flex-t p-t-14">'+
+											'<div class="block2-txt-child1 flex-col-l ">'+
+												'Name:<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">'+
+												value[1]+
+												'</a>'+
+				
+												'<span class="stext-105 cl3">'+
+													'$16.64'+
+												'</span>'+
+											'</div>'+
+				
+											'<div class="block2-txt-child2 flex-r p-t-3">'+
+												'<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">'+
+													'<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">'+
+													'<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">'+
+												'</a>'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+								'</div>';
+				}
 
 				each+='</div>';
 					$('#booksTable1').append(each);
@@ -894,25 +1070,8 @@ crossorigin="anonymous"></script>
 		   
 		} // error
 	});
-    
-    function SetID(){
-      var CID = prompt("Please enter your CID", 1);
-      var password = prompt("Please enter your password", "");
-      if (CID != null) {
-       document.getElementById("setCID").innerHTML =
-       "Customer ID: " + CID;
-       //Set CID here
-       sessionStorage.setItem("CID", CID);
-       console.log(CID);
-      }
- }
-
- if (sessionStorage.getItem("CID")!="") {
-  	greeting = "Good day";
-} else {
-  greeting = "Good evening";
-}
-
+	
+	
 </script>
 </body>
 </html>
