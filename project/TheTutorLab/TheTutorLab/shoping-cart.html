@@ -614,7 +614,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		$(function(){
 
 			CID = sessionStorage.getItem("CID");
-			console.log(CID)
+			console.log(CID);
 
 		    var serviceURL = "http://localhost:8000/cart/"+CID;
 		    getData(serviceURL);
@@ -668,11 +668,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 		async function PaymentMade(){
 			
-			serviceURL = "http://localhost:8000/payments/"+CID;
+			serviceURL = "http://localhost:8000/payments/";
+
+			var requestBody = {
+			        customerID: CID
+		    };
 
 			let requestParam = {
-	        mode: 'cors', // allow cross-origin resource sharing
-		        method: 'GET',
+				headers: { "content-type": "application/json; q charset=UTF-8"},
+	        	mode: 'cors', // allow cross-origin resource sharing
+		        method: 'POST',
+				body: JSON.stringify(requestBody)
 		    }
 		    try {
 		        const response = await fetch(serviceURL, requestParam);
