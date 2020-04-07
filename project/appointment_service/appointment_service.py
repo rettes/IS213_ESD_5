@@ -9,7 +9,7 @@ import json
 
 # initiate Flask
 app = Flask(__name__) 
-app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('appointment_serviceURL')
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get("appointment_serviceURL")
 # app.config['SQLALCHEMY_DATABASE_URI'] ='mysql+mysqlconnector://root@localhost:3306/appointment_service'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
@@ -57,8 +57,6 @@ def create_appointment():
     data = request.get_json()
     
     for item in data:
-        print(item)
-        print("testing2")
         del item['price']
         del item['payment_date']
         item['appointmentID'] = None
@@ -73,8 +71,6 @@ def create_appointment():
             print(e)
             return jsonify({"message": "An error occurred creating the appointment.", "status" : False}), 500
     
-    
-
     return jsonify(appointment.json()), 201
 
 if __name__ == "__main__":
