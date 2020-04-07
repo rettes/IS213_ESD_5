@@ -727,9 +727,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							'</p>'+
 
 							'<p class="stext-102 cl3 p-t-23"> Subject: '+
-								tutor.subject + ', '+
-								tutor.level +
+								tutor.subject +
 							'</p>'+
+							'<p class="stext-102 cl3 p-t-23"> Level: '+
+								tutor.level +
+							'</p>' +
 						
 							'<div class="p-t-33">'+
 								'<div class="flex-w flex-r-m p-b-10">'+
@@ -803,12 +805,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 			async function postData(serviceURL, requestBody) {
 			    var requestParam = {
-			        headers: { "content-type": "application/json; charset=UTF-8" },
+				 	method: 'POST',
+			        headers: { "Content-Type": "application/json; charset=UTF-8" },
 			        mode: 'cors', // other options: no-cors, etc.
-			        method: 'POST',
 			        body: JSON.stringify(requestBody)
 			    }
 		    try {
+				console.log(serviceURL)
+				console.log(requestParam)
 		        const response = await fetch(serviceURL, requestParam);
 		        data = await response.json();
 		        console.log(data);
@@ -821,7 +825,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			async function addtoCart() {
 				console.log(tutor);
 
-				 var serviceURL = "http://localhost:5006/cart" ;
+				 var serviceURL = "http://localhost:8000/cart" ;
 
 				// get datetime from input (how?)
 
@@ -841,7 +845,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				//POST to cart service
 				postData(serviceURL, requestBody);
 				alert("Successful added to cart!");
-				window.location.replace("shoping-cart.html");   
+				//window.location.replace("shoping-cart.html"); 
+				alert("pause")  
 			}
 			$(function(){
 
@@ -854,7 +859,7 @@ console.log(TID)
 CID = sessionStorage.getItem("CID");
 console.log("CID is "+ CID)
 
-    var serviceURL = "http://localhost:5001/tutor/"+TID;
+    var serviceURL = "http://localhost:8000/tutor/"+TID;
     getData(serviceURL);
 });
 

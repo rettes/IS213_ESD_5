@@ -555,8 +555,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 					tutor1[tutor.tutorID]=[tutor.tutorID,tutor.customerID,tutor.subject,tutor.level,tutor.timeslot,tutor.price];
 					
-					tutor_name = await getTutorName("http://localhost:5001/tutor/"+tutor.tutorID);
-					tutor_image = await getTutorImage("http://localhost:5001/tutor/"+tutor.tutorID);
+					tutor_name = await getTutorName("http://localhost:8000/tutor/"+tutor.tutorID);
+					tutor_image = await getTutorImage("http://localhost:8000/tutor/"+tutor.tutorID);
 					
 
 					//console.log(tutor_name);
@@ -614,9 +614,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		$(function(){
 
 			CID = sessionStorage.getItem("CID");
-			//console.log(CID)
+			console.log(CID)
 
-		    var serviceURL = "http://localhost:5006/cart/"+CID;
+		    var serviceURL = "http://localhost:8000/cart/"+CID;
 		    getData(serviceURL);
 		});
 
@@ -646,6 +646,21 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		       	tutor = data.tutor;
 				//console.log(tutor[0].name);
 				return tutor[0].image;
+		    } catch (error) {
+		        console.error(error);
+		    }
+		}
+		async function clearCart(){
+
+			serviceURL = "http://localhost:8000/cart/delete/"+CID;
+
+			let requestParam = {
+	        mode: 'cors', // allow cross-origin resource sharing
+		        method: 'GET',
+		    }
+		    try {
+		        const response = await fetch(serviceURL, requestParam);
+				console.log("Cart Cleared");
 		    } catch (error) {
 		        console.error(error);
 		    }
@@ -714,6 +729,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				return actions.payment.execute().then(function() {
 					// Show a confirmation message to the buyer
 					PaymentMade();
+					clearCart();
 					window.location.replace("index.html");
 				});
 				}
@@ -725,7 +741,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						var customerid = sessionStorage.getItem("CID");
 						console.log(sessionStorage.getItem("CID"));
 						console.log("yes");
-						var serviceURL = "http://127.0.0.1:5005/payments";
+						var serviceURL = "http://127.0.0.1:8000/payments";
 						
 
 						try {
