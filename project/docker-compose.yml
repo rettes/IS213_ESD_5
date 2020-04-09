@@ -81,7 +81,7 @@ services:
     depends_on:
       - kong-database
     ports:
-      - "1338:1337"
+      - "1337:1337"
 
   rabbitmq:
     image: rabbitmq:management

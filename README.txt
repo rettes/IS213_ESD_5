@@ -1,1 +1,7 @@
-Hello, This is a public repo. If you can see this, means you are connected to the repo!
+Hi Prof or User,
+
+You can read the ESD_Documentation to learn how to setup our application from scratch easily
+and test the application. 
+
+Regards,
+G7T4 (JOHN,SHAUN,LEON,WEIXIANG,XAVIER,RAY)
