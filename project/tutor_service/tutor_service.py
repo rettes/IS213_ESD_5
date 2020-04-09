@@ -64,7 +64,7 @@ def filter_tutor():
     elif subject != "":
         tutor = Tutor.query.filter(Tutor.subject==subject,
                                     Tutor.experience>=experience,
-                                    Tutor.rates>=rates).all()
+                                    Tutor.rates<=rates).all()
     if tutor:
         return jsonify({"tutor": [tutor.json() for tutor in tutor]})
     return jsonify({"message": "Tutor not found."}), 404
