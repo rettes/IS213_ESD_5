@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Ajax Lecture</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <script>
+        /*
+            1. JS Objects -- Accessing Properties & Methods
+            2. Looping through JS Object Properties -- for...in loop   
+            3. JSON Data Processing
+                - JSON Syntax 
+                - note: JSON is similar to JS Obj but some differences -- Keys are double-quoted; Cannot use single quotes for strings; In JS, keys can be strings, numbers, or identifier names: { name: "John" })
+                - in JSON, values must be of null, string, number, Boolean, object, array
+                - in JS, values can be of the above plus other data types like date, function, etc.
+            4. Methods for exchanging data beetween client and server: 
+                - JSON.parse() : JSON to JS
+                - JSON.stringify() : JS to JSON
+            5. Ajax
+                step1. create XMLHttpRequest object: 
+                            var req = new XMLHttpRequest()
+                step2. specify Get/Post Request and send to server:
+                        req.open("GET", "getData.php?name=John", true)
+                        req.send()
+                step3. check/wait for readyState == 4 and status == 200 and execute a task
+                
+            x. use of backtick `` for breaking the string into multi-lines
+                Double quotes not simply do the job.
+                i.e. element.innerHTML = `<h1>Person</h1> <h2> This is </h2>`
+            x. Defining function as a variable/property : https://www.w3schools.com/js/js_function_definition.asp
+            x. encodeURI(url) : https://www.w3schools.com/jsref/jsref_encodeURI.asp
+            x. APIs
+        */
+
+       
+    </script>
+</head>
+<body>
+
+    <p id="demo" class="lead m-2">Demo Text</p>
+
+    <button id="btn" onClick = "console.log('chicken')" class="btn btn-primary m-2">Demo</button>
+    <!--
+        If you have a short javascript code, you can write it in line like
+            i.e. onClick = "alert('hello')"
+    -->
+
+    <script>
+        var user = {    name : "John", 
+                        age : 19,
+                        hobby : ["swimming", "badminton"],
+                        addHobby : function(new_hobby) {
+                            this.hobby.push(new_hobby);
+                        } //method are also declared as property
+                            // when you are writing a function as a property,
+                            // you need to use this.age (to point to the property age)
+                    };
+
+        // 1) You can assign a function to a variable
+        // var x = function(){
+        //    console.log("hello")
+        // }
+        // x() <= This will run the function as an anonymous function
+
+        var demoElem = document.getElementById("demo");
+        var btnElem = document.getElementById("btn");
+        btnElem.addEventListener("click", demo2);
+        // How to pass parameters through btnElem.addEventListener("click", HERE)?
+        
+        //1) One thing you can do is to create anonymous function within the btnElem.addEventListener
+        // btnElem.addEventListener("click", function(){
+        //    demo('test')
+        // })
+        // You cannot put demo("hello") into btnElem.addEventListener
+        // Second way is to put btnElem.addEventListener("click", x) while x is a variable containing an anonymous function
+        // that calls demo("hello") inside the anonymous function
+        
+        function demo() {
+            //To point to an object property
+            // 1) console.log(user['name'])
+            // 2) console.log(user.hobby[0]);
+            
+            // method
+            var jsonObj = JSON.stringify(user);
+            console.log(jsonObj);
+        }
+
+       
+
+       
+        function demo2(){
+            // var url = "http://localhost/is216/Lesson6/inclass/res/ex1/getHint.php?query=a"
+            var url = "http://localhost:5004/account";
+            // ajax (Allowing sending pieces of the needed item in DOM without reloading the page)
+            // step 1.
+            var req = new XMLHttpRequest(); /// XHP obj
+            
+            // step 3.
+            req.onreadystatechange = function(){ // callback aka anonymous function
+                // this keyword to access the object property inside the object
+                if(this.readyState == 4){
+                    if(this.status == 200){
+                        // json format (Normally Text format)
+                        console.log(this.responseText)
+
+                        //convert into Javascript Object
+                        var jsObj = JSON.parse(this.responseText);
+                        // console.log(jsObj.weather[0].description);
+                        console.log(jsObj)
+                    }
+                }
+            }
+
+            //step 2. specify get/post req and send the request to the server
+            req.open("GET", url, true) // true -> asyn call (Does not wait for server to load and continue running)
+            // can use encodeURL(url) as a parameter to deal with special characters
+            req.send();
+            // cannot put step 3 here because at this stage, the request is 
+            // already sent over and therefore no state change at all anymore.
+
+            //
+            // JSON.stringify(obj) => convert into a JSON string
+        }
+
+    </script>
+    
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>           
+
+</body>
+</html>
