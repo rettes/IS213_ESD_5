@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>All Tutor</title>
+	<title>All Tutors</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
@@ -219,15 +219,15 @@
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						<a href="">Primary</a>
+						<a href="filtertutor.php?filter='Primary'">Primary</a>
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						<a href="">Secondary</a>
+						<a href="filtertutor.php?filter='Secondary'">Secondary</a>
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						<a href="">Junior College</a>
+						<a href="filtertutor.php?filter='JuniorCollege'">Junior College</a>
 					</button>
 
 	
@@ -785,7 +785,7 @@ crossorigin="anonymous"></script>
 		var experience = <?php echo($_POST["Experience"]);?>;
 		var rates = <?php echo($_POST["Rates"]);?>;
 		var subject = "<?php echo($_POST["Subject"]);?>";
-		var serviceURL = "http://127.0.0.1:5001/tutor";
+		var serviceURL = "http://localhost:8000/tutor";
 		
 
 		try {
@@ -808,7 +808,7 @@ crossorigin="anonymous"></script>
 			const data = await response.json();
 			console.log(data)
 			var tutors = data.tutor; //the arr is in data.books of the JSON data
-			console.log(tutors)
+			//console.log(tutors)
 			// array or array.length are falsy
 			if (!tutors || !tutors.length) {
 				showError('Books list empty or undefined.')
@@ -903,7 +903,7 @@ crossorigin="anonymous"></script>
        "Customer ID: " + CID;
        //Set CID here
        sessionStorage.setItem("CID", CID);
-       console.log(CID);
+      // console.log(CID);
       }
  }
 

@@ -58,13 +58,25 @@ def filter_tutor():
     subject = info["subject"]
     experience = info["experience"]
     rates = info["rates"]
+    level = info["level"]
     if subject == "":
-        tutor = Tutor.query.filter(Tutor.experience>=experience,
-                                    Tutor.rates>=rates).all()
+        if level == "":
+            tutor = Tutor.query.filter(Tutor.experience>=experience,
+                                    Tutor.rates<=rates).all()
+        else:
+            tutor = Tutor.query.filter(Tutor.level==level,
+                                        Tutor.experience>=experience,
+                                        Tutor.rates<=rates).all()
     elif subject != "":
-        tutor = Tutor.query.filter(Tutor.subject==subject,
-                                    Tutor.experience>=experience,
-                                    Tutor.rates>=rates).all()
+        if level == "":
+            tutor = Tutor.query.filter(Tutor.subject==subject,
+                                        Tutor.experience>=experience,
+                                        Tutor.rates<=rates).all()
+        else:
+            tutor = Tutor.query.filter(Tutor.level==level,
+                                        Tutor.subject==subject,
+                                        Tutor.experience>=experience,
+                                        Tutor.rates<=rates).all()
     if tutor:
         return jsonify({"tutor": [tutor.json() for tutor in tutor]})
     return jsonify({"message": "Tutor not found."}), 404

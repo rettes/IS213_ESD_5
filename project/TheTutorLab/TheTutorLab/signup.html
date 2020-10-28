@@ -277,41 +277,16 @@
                         const data = await response.json();
                         alert("You have successfully created your account! Please Login!");
                         window.location.replace("login.html"); 
-                        //console.log(data);
 
-                        //******************** check if reposnse is present**************
-                        // if(response.ok){
-                        //     window.location.replace(homeURL);
-                        //      return False;
-                        // }
-                        // else{
-                        //     showError(data.message)
-                        // }
                         
-                        var books = data.books; //the arr is in data.books of the JSON data
-                        
-                        console.log(books);
-                        showError('Book successfully added.')
                         
                     } catch (error) {
-                        // Errors when calling the service; such as network error, 
-                        // service offline, etc
-                        // showError
-                        // ('There is a problem retrieving books data, please try again later.<br />'+error);
-           
+
         } // error
 
                 });
 
-                ///////
-                $(async() => {           
-                    // Change serviceURL to your own
-                    
-                    
-                    var serviceURL = "http://127.0.0.1:8000/book/"+isbnNumber, methods=['POST'];
-            
-                    
-    });
+
 </script>
 
             
